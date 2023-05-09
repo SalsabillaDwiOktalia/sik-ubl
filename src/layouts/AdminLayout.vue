@@ -46,7 +46,7 @@
           </q-item-section>
 
             <q-item-section>
-              <q-item-label>Data Karyawan</q-item-label>
+              <q-item-label>Data Karyawans</q-item-label>
             </q-item-section>
         </q-item>
         <q-item clickable :to="{name: 'dataKontrakAdmin'}">
