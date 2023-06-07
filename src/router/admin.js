@@ -9,54 +9,34 @@ export default [
         name: 'dashboardAdmin'
       },
       {
-        path: 'data-karyawan',
-        component: () => import('pages/admin/data-karyawan/Index.vue'),
-        name: 'dataKaryawanAdmin'
+        path: 'karyawan',
+        component: () => import('pages/admin/karyawan/Index.vue'),
+        name: 'karyawanAdmin'
       },
       {
-        path: 'data-karyawan/input',
-        component: () => import('pages/admin/data-karyawan/FormInput.vue'),
+        path: 'karyawan/input',
+        component: () => import('pages/admin/karyawan/FormInputKaryawan.vue'),
         name: 'inputKaryawanAdmin'
       },
       {
-        path: 'data-kontrak',
-        component: () => import('pages/admin/data-kontrak/Index.vue'),
-        name: 'dataKontrakAdmin'
+        path: 'karyawan/edit/:id',
+        component: () => import('pages/admin/karyawan/FormEdit.vue'),
+        name: 'editKaryawanAdmin'
       },
       {
-        path: 'data-kontrak/input',
-        component: () => import('pages/admin/data-kontrak/FormInput.vue'),
-        name: 'inputKontrakAdmin'
+        path: 'status',
+        component: () => import('pages/admin/status/Index.vue'),
+        name: 'statusAdmin'
       },
       {
-        path: 'data-dosen',
-        component: () => import('pages/admin/data-dosen/Index.vue'),
-        name: 'dataDosenAdmin'
+        path: 'status/input',
+        component: () => import('pages/admin/status/FormInputStatus.vue'),
+        name: 'inputStatusAdmin'
       },
       {
-        path: 'data-dosen/input',
-        component: () => import('pages/admin/data-dosen/FormInputDosen.vue'),
-        name: 'InputDosenAdmin'
-      },
-      {
-        path: 'data-kabag',
-        component: () => import('pages/admin/data-kabag/Index.vue'),
-        name: 'datakabagAdmin'
-      },
-      {
-        path: 'data-kabag/input',
-        component: () => import('pages/admin/data-kabag/FormInputKabag.vue'),
-        name: 'inputKabagAdmin'
-      },
-      {
-        path: 'data-pimpinan',
-        component: () => import('pages/admin/data-pimpinan/Index.vue'),
-        name: 'dataPimpinanAdmin'
-      },
-      {
-        path: 'data-pimpinan/input',
-        component: () => import('pages/admin/data-pimpinan/FormInputPimpinan.vue'),
-        name: 'inputPimpinanAdmin'
+        path: 'status/edit/:id',
+        component: () => import('pages/admin/status/FormEdit.vue'),
+        name: 'editStatusAdmin'
       },
       {
         path: 'jabatan',

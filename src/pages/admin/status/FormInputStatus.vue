@@ -2,16 +2,15 @@
   <q-page padding>
     <q-card flat>
       <q-card-section>
-        Input Karyawan
+        Input Pimpinan Unit
       </q-card-section>
-      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'inputJabatanAdmin'}"/>
+      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'statusAdmin'}"/>
       <q-card-section>
         <q-form @submit="onSubmit">
-          <q-input label="Kode Jabatan" v-model="form.kode_jabatan" />
-          <q-input label="Nama Jabatan" v-model="form.nama_jabatan" />
-          <q-input label="Tunjangan Jabatan" v-model="form.tunjangan_jabatan" />
+          <q-input label="Nama Status" v-model="form.nama_status" />
+          <q-input label="Gaji Pokok" v-model="form.gaji_pokok" />
           <q-input label="Keterangan" v-model="form.keterangan" />
-          <q-btn label="Submit Karyawan" color="primary" unelevated type="submit" />
+          <q-btn label="Submit Status" color="primary" unelevated type="submit" />
         </q-form>
       </q-card-section>
     </q-card>
@@ -22,9 +21,8 @@ export default {
   data () {
     return {
       form: {
-        kode_jabatan: null,
-        nama_jabatan: null,
-        tunjangan_jabatan: null,
+        nama_status: null,
+        gaji_pokok: null,
         keterangan: null
 
       }
@@ -32,7 +30,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      this.$axios.post('/jabatan/create', this.form)
+      this.$axios.post('/status/create', this.form)
         .then(res => {
           if (this.$parseResponse(res.data)) {
             this.$router.back()

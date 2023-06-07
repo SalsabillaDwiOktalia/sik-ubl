@@ -31,7 +31,7 @@
           Essential Links
         </q-item-label>
 
-        <q-item clickable :to="{name: 'dashboardAdmin'}">
+        <q-item clickable :to="{name: 'dashboardDosen'}">
           <q-item-section avatar>
             <q-icon name="dashboard" />
           </q-item-section>
@@ -40,42 +40,49 @@
               <q-item-label>Dashboard</q-item-label>
             </q-item-section>
         </q-item>
-        <q-item clickable :to="{name: 'karyawanAdmin'}">
+
+        <q-item clickable :to="{name: 'TugasDosen'}">
           <q-item-section avatar>
-            <q-icon name="switch_account" />
+            <q-icon name="library_books" />
           </q-item-section>
 
             <q-item-section>
-              <q-item-label>Data Karyawan</q-item-label>
-            </q-item-section>
-        </q-item>
-      <q-item clickable :to="{name: 'jabatanAdmin'}">
-          <q-item-section avatar>
-            <q-icon name="person" />
-          </q-item-section>
-
-            <q-item-section>
-              <q-item-label>jabatan</q-item-label>
+              <q-item-label>Tugas Opsional</q-item-label>
             </q-item-section>
       </q-item>
-      <q-item clickable :to="{name: 'unitKerjaAdmin'}">
+
+      <q-item clickable :to="{name: 'ArsipDosen'}">
           <q-item-section avatar>
-            <q-icon name="person" />
+            <q-icon name="folder" />
           </q-item-section>
 
             <q-item-section>
-              <q-item-label>Unit Kerja</q-item-label>
+              <q-item-label>Arsip</q-item-label>
             </q-item-section>
       </q-item>
-      <q-item clickable :to="{name: 'statusAdmin'}">
-          <q-item-section avatar>
-            <q-icon name="person" />
-          </q-item-section>
 
-            <q-item-section>
-              <q-item-label>Status</q-item-label>
+        <q-expansion-item
+          icon="settings"
+          label="About"
+          :content-inset-level="0"
+        >
+          <q-item clickable :to="{name: 'TentangKamiDosen'}">
+            <q-item-section avatar>
             </q-item-section>
-      </q-item>
+
+              <q-item-section>
+                <q-item-label>Tentang Kami</q-item-label>
+              </q-item-section>
+          </q-item>
+          <q-item clickable :to="{name: 'ProfilDosen'}">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Profile</q-item-label>
+              </q-item-section>
+          </q-item>
+        </q-expansion-item>
       </q-list>
     </q-drawer>
 

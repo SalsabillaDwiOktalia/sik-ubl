@@ -31,7 +31,7 @@
           Essential Links
         </q-item-label>
 
-        <q-item clickable :to="{name: 'dashboardKaryawan'}">
+        <q-item clickable :to="{name: 'dashboardKepalaBiro'}">
           <q-item-section avatar>
             <q-icon name="dashboard" />
           </q-item-section>
@@ -46,15 +46,23 @@
           label="Tugas"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'LihatTugasKaryawan'}">
+          <q-item clickable :to="{name: 'TugasUntukKaryawan'}">
             <q-item-section avatar>
             </q-item-section>
 
               <q-item-section>
-                <q-item-label>Lihat Tugas</q-item-label>
+                <q-item-label>Tugas Untuk Karyawan</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'TambahTugasKaryawan'}">
+          <q-item clickable :to="{name: 'TugasDariPimpinan'}">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Tugas Dari Pimpinan</q-item-label>
+              </q-item-section>
+          </q-item>
+          <q-item clickable :to="{name: 'tugasTambahTugasKepalaBiro'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -66,7 +74,7 @@
 
         <q-expansion-item
           icon="edit_document"
-          label="Laporan Penilaian"
+          label="Logbook"
           :content-inset-level="0"
         >
           <q-item clickable :to="{name: 'LaporanKaryawan'}">
@@ -107,7 +115,7 @@
           label="About"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'TentangKamiKaryawan'}">
+          <q-item clickable :to="{name: 'TentangKamiKepalaBiro'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -115,7 +123,7 @@
                 <q-item-label>Tentang Kami</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'ProfilKaryawan'}">
+          <q-item clickable :to="{name: 'ProfilKepalaBiro'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -132,8 +140,8 @@
     </q-page-container>
   </q-layout>
 </template>
-<script>
 
+<script>
 import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'MainLayout',

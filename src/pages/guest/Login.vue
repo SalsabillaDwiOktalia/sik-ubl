@@ -46,11 +46,17 @@ export default {
         if (this.$parseResponse(res.data, true)) {
           const data = res.data.data
           if (data.level === 0) {
+            this.$setProfile(data)
             this.$router.push({
               name: 'dashboardAdmin'
             })
+          } else if (data.level === 1) {
+            this.$setProfile(data)
+            this.$router.push({
+              name: 'indexKaryawan'
+            })
           } else {
-            alert('belum dibuat')
+            alert('Role Tidak Terdaftar')
           }
         }
       }).catch(() => {

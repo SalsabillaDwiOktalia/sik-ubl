@@ -25,6 +25,9 @@
             <q-td key="nama_jabatan" :props="props">
               {{ props.row.nama_jabatan }}
             </q-td>
+            <q-td key="tunjangan_jabatan" :props="props">
+              {{ props.row.tunjangan_jabatan }}
+            </q-td>
             <q-td key="keterangan" :props="props">
               {{ props.row.keterangan }}
             </q-td>
@@ -48,6 +51,7 @@ export default {
       columns: [
         { name: 'kode_jabatan', align: 'left', label: 'Kode Jabatan', field: 'kode_jabatan' },
         { name: 'nama_jabatan', align: 'left', label: 'Nama Jabatan', field: 'nama_jabatan' },
+        { name: 'tunjangan_jabatan', align: 'left', label: 'Tunjangan Jabatan', field: 'tunjangan_jabatan' },
         { name: 'keterangan', align: 'left', label: 'Keterangan', field: 'keterangan' },
         { name: 'aksi', align: 'left', label: 'Aksi', field: 'aksi' }
       ],

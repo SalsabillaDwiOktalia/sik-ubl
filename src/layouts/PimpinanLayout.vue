@@ -31,7 +31,7 @@
           Essential Links
         </q-item-label>
 
-        <q-item clickable :to="{name: 'dashboardKaryawan'}">
+        <q-item clickable :to="{name: 'dashboardPimpinan'}">
           <q-item-section avatar>
             <q-icon name="dashboard" />
           </q-item-section>
@@ -46,7 +46,7 @@
           label="Tugas"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'LihatTugasKaryawan'}">
+          <q-item clickable :to="{name: 'tugasPimpinan'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -54,7 +54,7 @@
                 <q-item-label>Lihat Tugas</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'TambahTugasKaryawan'}">
+          <q-item clickable :to="{name: 'tugasTambahTugasPimpinan'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -69,7 +69,15 @@
           label="Laporan Penilaian"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'LaporanKaryawan'}">
+          <q-item clickable :to="{name: 'LaporanDosen'}">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Dosen</q-item-label>
+              </q-item-section>
+          </q-item>
+          <q-item clickable :to="{name: 'LaporanKaryawanDosen'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -79,35 +87,22 @@
           </q-item>
         </q-expansion-item>
 
-        <q-expansion-item
-          icon="folder"
-          label="Arsip"
-          :content-inset-level="0"
-        >
-          <q-item clickable :to="{name: 'ArsipKuKepalaBiro'}">
-            <q-item-section avatar>
-            </q-item-section>
+        <q-item clickable :to="{name: 'ArsipPimpinan'}">
+          <q-item-section avatar>
+            <q-icon name="folder" />
+          </q-item-section>
 
-              <q-item-section>
-                <q-item-label>ArsipKu</q-item-label>
-              </q-item-section>
-          </q-item>
-          <q-item clickable :to="{name: 'ArsipKaryawanKepalabiro'}">
-            <q-item-section avatar>
+            <q-item-section>
+              <q-item-label>Arsip</q-item-label>
             </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Arsip Karyawan</q-item-label>
-              </q-item-section>
-          </q-item>
-        </q-expansion-item>
+      </q-item>
 
         <q-expansion-item
           icon="settings"
           label="About"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'TentangKamiKaryawan'}">
+          <q-item clickable :to="{name: 'TentangKamiPimpinan'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -115,7 +110,7 @@
                 <q-item-label>Tentang Kami</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'ProfilKaryawan'}">
+          <q-item clickable :to="{name: 'ProfilPimpinan'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -132,8 +127,8 @@
     </q-page-container>
   </q-layout>
 </template>
-<script>
 
+<script>
 import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'MainLayout',

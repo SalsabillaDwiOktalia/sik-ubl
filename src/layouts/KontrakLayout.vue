@@ -31,7 +31,7 @@
           Essential Links
         </q-item-label>
 
-        <q-item clickable :to="{name: 'dashboardKaryawan'}">
+        <q-item clickable :to="{name: 'dashboardKontrak'}">
           <q-item-section avatar>
             <q-icon name="dashboard" />
           </q-item-section>
@@ -43,71 +43,111 @@
 
         <q-expansion-item
           icon="library_books"
-          label="Tugas"
+          label="Data Kontrak Karyawan"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'LihatTugasKaryawan'}">
+          <q-item clickable :to="{name: 'dataDosenKontrak'}">
             <q-item-section avatar>
             </q-item-section>
 
               <q-item-section>
-                <q-item-label>Lihat Tugas</q-item-label>
+                <q-item-label>Dosen</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'TambahTugasKaryawan'}">
+          <q-item clickable :to="{name: 'dataKaryawanKontrak'}">
             <q-item-section avatar>
             </q-item-section>
 
               <q-item-section>
-                <q-item-label>Tambah Tugas</q-item-label>
+                <q-item-label>Karyawan admin</q-item-label>
+              </q-item-section>
+          </q-item>
+          <q-item clickable :to="{name: 'dataMagangalmKontrak'}">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Magang (Alumni)</q-item-label>
+              </q-item-section>
+          </q-item>
+          <q-item clickable :to="{name: 'dataMagangmhsKontrak'}">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Magang (Mahasiswa)</q-item-label>
+              </q-item-section>
+          </q-item>
+          <q-item clickable :to="{name: 'dataPerbantuanKontrak'}">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Tenaga Perbantuan</q-item-label>
+              </q-item-section>
+          </q-item>
+          <q-item clickable :to="{name: 'dataObKontrak'}">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Office Boy</q-item-label>
+              </q-item-section>
+          </q-item>
+          <q-item clickable :to="{name: 'dataSatpamKontrak'}">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Satpam</q-item-label>
+              </q-item-section>
+          </q-item>
+          <q-item clickable :to="{name: 'dataSupirKontrak'}">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Supir</q-item-label>
               </q-item-section>
           </q-item>
         </q-expansion-item>
 
-        <q-expansion-item
-          icon="edit_document"
-          label="Laporan Penilaian"
-          :content-inset-level="0"
-        >
-          <q-item clickable :to="{name: 'LaporanKaryawan'}">
-            <q-item-section avatar>
+        <q-item clickable :to="{name: 'laporanPimpinan'}">
+          <q-item-section avatar>
+            <q-icon name="edit_document" />
+          </q-item-section>
+
+            <q-item-section>
+              <q-item-label>Input Kontrak Kerja</q-item-label>
             </q-item-section>
+        </q-item>
 
-              <q-item-section>
-                <q-item-label>Karyawan</q-item-label>
-              </q-item-section>
-          </q-item>
-        </q-expansion-item>
+        <q-item clickable :to="{name: 'arsipPimpinan'}">
+          <q-item-section avatar>
+            <q-icon name="campaign" />
+          </q-item-section>
 
-        <q-expansion-item
-          icon="folder"
-          label="Arsip"
-          :content-inset-level="0"
-        >
-          <q-item clickable :to="{name: 'ArsipKuKepalaBiro'}">
-            <q-item-section avatar>
+            <q-item-section>
+              <q-item-label>Pemberitahuan</q-item-label>
             </q-item-section>
+        </q-item>
 
-              <q-item-section>
-                <q-item-label>ArsipKu</q-item-label>
-              </q-item-section>
-          </q-item>
-          <q-item clickable :to="{name: 'ArsipKaryawanKepalabiro'}">
-            <q-item-section avatar>
+        <q-item clickable :to="{name: 'arsipPimpinan'}">
+          <q-item-section avatar>
+            <q-icon name="elderly" />
+          </q-item-section>
+
+            <q-item-section>
+              <q-item-label>Pensiunan</q-item-label>
             </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Arsip Karyawan</q-item-label>
-              </q-item-section>
-          </q-item>
-        </q-expansion-item>
+        </q-item>
 
         <q-expansion-item
           icon="settings"
           label="About"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'TentangKamiKaryawan'}">
+          <q-item clickable :to="{name: 'aboutPimpinan'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -115,7 +155,7 @@
                 <q-item-label>Tentang Kami</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'ProfilKaryawan'}">
+          <q-item clickable :to="{name: 'aboutPimpinan'}">
             <q-item-section avatar>
             </q-item-section>
 

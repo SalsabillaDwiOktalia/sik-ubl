@@ -27,7 +27,9 @@ module.exports = configure(function (ctx) {
 
       'axios',
       'ParseResponse',
-      'Notify'
+      'Notify',
+      'ShowLoading',
+      'Helper'
     ],
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-css
@@ -106,7 +108,8 @@ module.exports = configure(function (ctx) {
       // Quasar plugins
       plugins: [
         'Notify',
-        'Dialog'
+        'Dialog',
+        'Loading'
       ]
     },
 

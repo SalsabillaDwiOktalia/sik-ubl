@@ -4,14 +4,13 @@
       <q-card-section>
         Input Karyawan
       </q-card-section>
-      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'inputJabatanAdmin'}"/>
+      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'inputStatusAdmin'}"/>
       <q-card-section>
         <q-form @submit="onSubmit">
-          <q-input label="Kode Jabatan" disable v-model="form.kode_jabatan" />
-          <q-input label="Nama Jabatan" v-model="form.nama_jabatan" />
-          <q-input label="Tunjangan Jabatan" v-model="form.tunjangan_jabatan" />
+          <q-input label="Nama Status" v-model="form.nama_status" />
+          <q-input label="Gaji Pokok" v-model="form.gaji_pokok" />
           <q-input label="Keterangan" v-model="form.keterangan" />
-          <q-btn label="Submit Karyawan" color="primary" unelevated type="submit" />
+          <q-btn label="Submit Status" color="primary" unelevated type="submit" />
         </q-form>
       </q-card-section>
     </q-card>
@@ -22,12 +21,13 @@ export default {
   data () {
     return {
       form: {
-        kode_jabatan: null,
-        nama_jabatan: null,
-        tunjangan_jabatan: null,
+        nama_status: null,
+        gaji_pokok: null,
         keterangan: null
 
-      }
+      },
+      status: null,
+      listStatus: []
     }
   },
   created () {
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     getData () {
-      this.$axios.get(`jabatan/get/${this.$route.params.kode}`)
+      this.$axios.get(`status/get/${this.$route.params.id}`)
         .then(res => {
           if (this.$parseResponse(res.data, false)) {
             this.form = res.data.data
@@ -43,15 +43,22 @@ export default {
         })
     },
     onSubmit () {
-      this.$axios.put(`jabatan/update/${this.$route.params.kode}`, {
-        nama_jabatan: this.form.nama_jabatan,
-        tunjangan_jabatan: Number(this.form.tunjangan_jabatan),
+      this.$axios.put(`status/update/${this.$route.params.id}`, {
+        gaji_pokok: Number(this.form.gaji_pokok),
         keterangan: this.form.keterangan
       }).then(res => {
         if (this.$parseResponse(res.data)) {
           this.$router.back()
         }
       })
+    },
+    getStatus () {
+      this.$axios.get('/status/getall')
+        .then(res => {
+          if (this.$parseResponse(res.data, false)) {
+            this.listStatus = res.data.data
+          }
+        })
     }
   }
 }
