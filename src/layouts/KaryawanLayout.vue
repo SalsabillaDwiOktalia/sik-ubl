@@ -31,7 +31,7 @@
           Essential Links
         </q-item-label>
 
-        <q-item clickable :to="{name: 'dashboardAdmin'}">
+        <q-item clickable :to="{name: 'dashboardKaryawan'}">
           <q-item-section avatar>
             <q-icon name="dashboard" />
           </q-item-section>
@@ -83,24 +83,6 @@
 
             <q-item-section>
               <q-item-label>Pimpinan Unit</q-item-label>
-            </q-item-section>
-      </q-item>
-      <q-item clickable :to="{name: 'jabatanAdmin'}">
-          <q-item-section avatar>
-            <q-icon name="person" />
-          </q-item-section>
-
-            <q-item-section>
-              <q-item-label>jabatan</q-item-label>
-            </q-item-section>
-      </q-item>
-      <q-item clickable :to="{name: 'unitKerjaAdmin'}">
-          <q-item-section avatar>
-            <q-icon name="person" />
-          </q-item-section>
-
-            <q-item-section>
-              <q-item-label>Unit Kerja</q-item-label>
             </q-item-section>
       </q-item>
       </q-list>

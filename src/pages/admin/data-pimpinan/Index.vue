@@ -3,7 +3,7 @@
     <div class="q-pa-md">
       <q-table
         flat bordered
-        title="Data Karyawan"
+        title="Data Pimpinan Unit"
         :rows="rows"
         :columns="columns"
         row-key="name"
@@ -14,23 +14,23 @@
               <q-icon name="search" />
             </template>
           </q-input>
-          <q-btn label="Karyawan" class="q-ml-md" icon="add" unelevated color="primary" :to="{name: 'inputKaryawanAdmin'}"/>
+          <q-btn label="Kabag" class="q-ml-md" icon="add" unelevated color="primary" :to="{name: 'inputPimpinanAdmin'}"/>
         </template>
         <template v-slot:body="props">
           <q-tr :props="props">
-            <q-td key="id_karyawan" :props="props">
+            <q-td key="namapimpinan" :props="props">
               dika
             </q-td>
-            <q-td key="namakaryawan" :props="props">
+             <q-td key="nidn" :props="props">
               dika
             </q-td>
-            <q-td key="divisi" :props="props">
+             <q-td key="jabatan" :props="props">
               dika
             </q-td>
             <q-td key="alamat" :props="props">
               dika
             </q-td>
-            <q-td key="nohp" :props="props">
+             <q-td key="nohp" :props="props">
               dika
             </q-td>
           </q-tr>
@@ -44,9 +44,9 @@ export default {
   data () {
     return {
       columns: [
-        { name: 'id_karyawan', align: 'left', label: 'ID Karyawan', field: 'id_karyawan' },
-        { name: 'namaKaryawan', align: 'left', label: 'Nama Karyawan', field: 'namaKaryawan' },
-        { name: 'divisi', align: 'left', label: 'Divisi', field: 'divisi' },
+        { name: 'namapimpinan', align: 'left', label: 'Nama Pimpinan Unit', field: 'namaPimpinan' },
+        { name: 'nidn', align: 'left', label: 'NIDN', field: 'nidn' },
+        { name: 'jabatan', align: 'left', label: 'Jabatan', field: 'jabatan' },
         { name: 'alamat', align: 'left', label: 'Alamat', field: 'alamat' },
         { name: 'nohp', align: 'left', label: 'No Hp', field: 'nohp' }
       ],

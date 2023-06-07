@@ -21,7 +21,37 @@
             <q-td key="namakaryawan" :props="props">
               dika
             </q-td>
+            <q-td key="tanggallahir" :props="props">
+              dika
+            </q-td>
+            <q-td key="jeniskelamin" :props="props">
+              dika
+            </q-td>
             <q-td key="alamat" :props="props">
+              dika
+            </q-td>
+            <q-td key="nik" :props="props">
+              dika
+            </q-td>
+            <q-td key="notlpn" :props="props">
+              dika
+            </q-td>
+            <q-td key="pendidikanterakhir" :props="props">
+              dika
+            </q-td>
+            <q-td key="tanggalmasukkerja" :props="props">
+              dika
+            </q-td>
+            <q-td key="lamakontrak" :props="props">
+              dika
+            </q-td>
+            <q-td key="divisikerja" :props="props">
+              dika
+            </q-td>
+            <q-td key="gaji" :props="props">
+              dika
+            </q-td>
+            <q-td key="keterangan" :props="props">
               dika
             </q-td>
           </q-tr>
@@ -36,7 +66,17 @@ export default {
     return {
       columns: [
         { name: 'namaKaryawan', align: 'left', label: 'Nama Karyawan', field: 'namaKaryawan' },
-        { name: 'alamat', align: 'left', label: 'Alamat', field: 'alamat' }
+        { name: 'tanggallahir', align: 'left', label: 'Tanggal Lahir', field: 'tanggallahir' },
+        { name: 'jeniskelamin', align: 'left', label: 'Jenis Kelamin', field: 'jeniskelamin' },
+        { name: 'alamat', align: 'left', label: 'Alamat', field: 'alamat' },
+        { name: 'nik', align: 'left', label: 'NIK', field: 'nik' },
+        { name: 'notlpn', align: 'left', label: 'No. Telpn', field: 'notlpn' },
+        { name: 'pendidikanterakhir', align: 'left', label: 'Pendidikan Terakhir', field: 'pendidikanterakhir' },
+        { name: 'tanggalmasukkerja', align: 'left', label: 'Tanggal Masuk Kerja', field: 'tanggalmasukkerja' },
+        { name: 'lamakontrak', align: 'left', label: 'Kontrak Kerja', field: 'lamakontrak' },
+        { name: 'divisikerja', align: 'left', label: 'Divisi Kerja', field: 'divisikerja' },
+        { name: 'gaji', align: 'left', label: 'Gaji', field: 'gaji' },
+        { name: 'keterangan', align: 'left', label: 'Keterangan', field: 'keterangan' }
       ],
       rows: [],
       filter: null
