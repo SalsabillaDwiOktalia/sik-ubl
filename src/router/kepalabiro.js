@@ -11,7 +11,7 @@ export default [
       {
         path: 'tugas/untuk_karyawan',
         component: () => import('pages/kepalabiro/tugas/TugasUntukKaryawan.vue'),
-        name: 'TugasUntukKaryawan'
+        name: 'tugasUntukKaryawan'
       },
       {
         path: 'tugas/tambah_tugas',
@@ -21,7 +21,12 @@ export default [
       {
         path: 'tugas/dari_pimpinan',
         component: () => import('src/pages/kepalabiro/tugas/TugasDariPimpinan.vue'),
-        name: 'TugasDariPimpinan'
+        name: 'tugasDariPimpinan'
+      },
+      {
+        path: 'tugas/kerjakan/:id',
+        component: () => import('src/pages/kepalabiro/tugas/Kerjakan.vue'),
+        name: 'kerjakanKepalaBiro'
       }
     ]
   }

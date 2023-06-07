@@ -46,7 +46,7 @@
           label="Tugas"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'TugasUntukKaryawan'}">
+          <q-item clickable :to="{name: 'tugasUntukKaryawan'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -54,7 +54,7 @@
                 <q-item-label>Tugas Untuk Karyawan</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'TugasDariPimpinan'}">
+          <q-item clickable :to="{name: 'tugasDariPimpinan'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -77,7 +77,7 @@
           label="Logbook"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'LaporanKaryawan'}">
+          <q-item clickable :to="{name: 'laporanKaryawan'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -92,7 +92,7 @@
           label="Arsip"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'ArsipKuKepalaBiro'}">
+          <q-item clickable :to="{name: 'arsipKuKepalaBiro'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -100,7 +100,7 @@
                 <q-item-label>ArsipKu</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'ArsipKaryawanKepalabiro'}">
+          <q-item clickable :to="{name: 'arsipKaryawanKepalabiro'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -115,7 +115,7 @@
           label="About"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'TentangKamiKepalaBiro'}">
+          <q-item clickable :to="{name: 'tentangKamiKepalaBiro'}">
             <q-item-section avatar>
             </q-item-section>
 
@@ -123,7 +123,7 @@
                 <q-item-label>Tentang Kami</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'ProfilKepalaBiro'}">
+          <q-item clickable :to="{name: 'profilKepalaBiro'}">
             <q-item-section avatar>
             </q-item-section>
 

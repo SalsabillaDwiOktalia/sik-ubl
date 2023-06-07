@@ -17,6 +17,11 @@ export default [
         path: 'tugas/tambahTugas',
         component: () => import('pages/pimpinan/tugas/TambahTugas.vue'),
         name: 'tugasTambahTugasPimpinan'
+      },
+      {
+        path: 'tugas/revisi/:id',
+        component: () => import('pages/pimpinan/tugas/Revisi.vue'),
+        name: 'tugasRevisiPimpinan'
       }
     ]
   }

@@ -19,6 +19,9 @@
         </template>
         <template v-slot:body="props">
           <q-tr :props="props">
+            <q-td key="nama_karyawan" :props="props">
+              {{ props.row.pimpinanUnit }}
+            </q-td>
             <q-td key="judul_tugas" :props="props">
               {{ props.row.judul_tugas }}
             </q-td>
@@ -46,7 +49,7 @@
             </q-td>
             <q-td key="aksi" :props="props">
               <div class="row q-gutter-x-md">
-                <q-btn label="Kerjakan" unelevated icon="library_books" color="green" :to="{name:'tugasTambahTugasKepalaBiro', params:{kode:props.row.nama_tugas}}"/>
+                <q-btn label="Kerjakan" :disable="!(props.row.status === 1 || props.row.status === 4)" unelevated icon="library_books" color="green" :to="{name:'kerjakanKepalaBiro', params:{id:props.row.id_tugas}}"/>
               </div>
             </q-td>
           </q-tr>
@@ -63,6 +66,7 @@ export default {
       statusTugas,
       loading: false,
       columns: [
+        { name: 'nama_karyawan', align: 'left', label: 'Tugas Dari', field: 'nama_karyawan ' },
         { name: 'judul_tugas', align: 'left', label: 'Judul Tugas', field: 'judul_tugas' },
         { name: 'deskripsi_tugas', align: 'left', label: 'Deskripsi', field: 'deskripsi_tugas' },
         { name: 'ket_revisi', align: 'left', label: 'Keterangan Revisi', field: 'ket_revisi' },
@@ -85,7 +89,7 @@ export default {
       this.$axios.get(`/tugas_pimpinanunit/get/tugas-kepala-biro/${this.$getProfile().id_karyawan}`)
         .finally(() => { this.loading = false })
         .then(res => {
-          console.log(res)
+          // console.log(res)
           if (this.$parseResponse(res.data, false)) {
             this.rows = res.data.data
             this.loading = false

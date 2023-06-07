@@ -2,7 +2,8 @@
   <q-page>
     <div class="q-pa-md">
       <q-table
-        flat bordered
+        flat
+        bordered
         title="Tugas"
         :rows="rows"
         :columns="columns"
@@ -43,9 +44,16 @@
                 {{ statusTugas[props.row.status].label }}
               </q-badge>
             </q-td>
+            <q-td key="hasilTugas" :props="props">
+              <div class="row q-gutter-x-xs">
+                <q-btn label="Lihat File" :disable="props.row.file_hasil === null" color="primary" unelevated outline :href="`${$baseLampiran}${props.row.file_hasil}`" type="a" target="_blank" />
+              </div>
+            </q-td>
             <q-td key="aksi" :props="props">
-              <div class="row q-gutter-x-md">
-                <q-btn label="Kerjakan" unelevated icon="library_books" color="green" :to="{name:'tugasKerjakanPimpinan', params:{kode:props.row.nama_tugas}}"/>
+              <div class="justify-center q-gutter-x-xs">
+                <q-btn label="Revisi" :disable="props.row.status !== 2" icon="close" outline color="negative" :to="{name: 'tugasRevisiPimpinan', params:{id:props.row.id_tugas}}" />
+                <q-btn label="Selesai" @click="selesai(props.row.id_tugas)" :disable="props.row.status !== 2" icon="done" outline color="positive"/>
+                <q-btn label="Detail" unelevated icon="info" color="primary"/>
               </div>
             </q-td>
           </q-tr>
@@ -67,8 +75,9 @@ export default {
         { name: 'ket_revisi', align: 'left', label: 'Keterangan Revisi', field: 'ket_revisi' },
         { name: 'nama_unit_kerja', align: 'left', label: 'Unit Kerja', field: 'nama_unit_kerja' },
         { name: 'deadline', align: 'left', label: 'Deadline', field: 'deadline' },
-        { name: 'lampiran', align: 'left', label: 'Lampiran', field: 'lampiran' },
+        { name: 'lampiran', align: 'left', label: 'Lampiran Tugas', field: 'lampiran' },
         { name: 'status', align: 'left', label: 'Status', field: 'status' },
+        { name: 'hasilTugas', align: 'left', label: 'Hasil Tugas', field: 'hasilTugas' },
         { name: 'aksi', align: 'left', label: 'Aksi', field: 'aksi' }
       ],
       rows: [],
@@ -88,6 +97,23 @@ export default {
             this.loading = false
           }
         })
+    },
+    selesai (id) {
+      this.$q.dialog({
+        title: 'konfirmasi',
+        message: 'apakah kamu yakin ?',
+        cancel: true,
+        persistent: true
+      }).onOk(() => {
+        this.$showLoading()
+        this.$axios.get(`tugas_pimpinanunit/update/selesai/${id}`)
+          .finally(() => this.$hide())
+          .then(res => {
+            if (this.$parseResponse(res.data)) {
+              this.getData()
+            }
+          })
+      })
     }
   }
 }
