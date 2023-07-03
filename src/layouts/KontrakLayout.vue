@@ -1,37 +1,55 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header unelevated class="bg-white">
       <q-toolbar>
         <q-btn
           flat
           dense
+          color="blue-grey-14"
           round
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title class="text-blue-grey-14">
+          SIK UBL
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div class="text-blue-grey-14">
+          <q-btn flat dense round class="q-pa-sm" icon="person" style="font-size: 14px;">
+            <q-menu>
+              <q-list>
+                <q-item>
+                  <q-item-section side>
+                    <q-icon name="logout"/>
+                  </q-item-section>
+                  <q-item-section>Logout</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
+        </div>
       </q-toolbar>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      bordered
+      content-class="bg-white"
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+    <q-list class="q-pa-xs">
+        <q-item class="justify-center text-center q-mb-md q-pt-md">
+          <div>
+            <q-avatar style="width: 100px;height: 100px" class="q-mb-md">
+              <img src="~assets/img/LOGO-UBL.png" alt="">
+            </q-avatar>
+            <div class="text-weight-bold">SIK UBL</div>
+            <div class="text-weight-bold">Hello, {{ $getProfile().username }}</div>
+          </div>
+        </q-item>
 
-        <q-item clickable :to="{name: 'dashboardKontrak'}">
+        <q-item clickable active-class="active" v-ripple :to="{name: 'dashboardKontrak'}">
           <q-item-section avatar>
             <q-icon name="dashboard" />
           </q-item-section>
@@ -46,7 +64,7 @@
           label="Data Kontrak Karyawan"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'dataDosenKontrak'}">
+          <q-item clickable :to="{name: 'dataDosenKontrak'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -54,7 +72,7 @@
                 <q-item-label>Dosen</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'dataKaryawanKontrak'}">
+          <q-item clickable :to="{name: 'dataKaryawanKontrak'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -62,7 +80,7 @@
                 <q-item-label>Karyawan admin</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'dataMagangalmKontrak'}">
+          <q-item clickable :to="{name: 'dataMagangalmKontrak'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -70,7 +88,7 @@
                 <q-item-label>Magang (Alumni)</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'dataMagangmhsKontrak'}">
+          <q-item clickable :to="{name: 'dataMagangmhsKontrak'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -78,7 +96,7 @@
                 <q-item-label>Magang (Mahasiswa)</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'dataPerbantuanKontrak'}">
+          <q-item clickable :to="{name: 'dataPerbantuanKontrak'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -86,7 +104,7 @@
                 <q-item-label>Tenaga Perbantuan</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'dataObKontrak'}">
+          <q-item clickable :to="{name: 'dataObKontrak'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -94,7 +112,7 @@
                 <q-item-label>Office Boy</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'dataSatpamKontrak'}">
+          <q-item clickable :to="{name: 'dataSatpamKontrak'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -102,7 +120,7 @@
                 <q-item-label>Satpam</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'dataSupirKontrak'}">
+          <q-item clickable :to="{name: 'dataSupirKontrak'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -112,7 +130,7 @@
           </q-item>
         </q-expansion-item>
 
-        <q-item clickable :to="{name: 'laporanPimpinan'}">
+        <q-item clickable :to="{name: 'laporanPimpinan'}" active-class="active">
           <q-item-section avatar>
             <q-icon name="edit_document" />
           </q-item-section>
@@ -122,7 +140,7 @@
             </q-item-section>
         </q-item>
 
-        <q-item clickable :to="{name: 'arsipPimpinan'}">
+        <q-item clickable :to="{name: 'arsipPimpinan'}" active-class="active">
           <q-item-section avatar>
             <q-icon name="campaign" />
           </q-item-section>
@@ -132,7 +150,7 @@
             </q-item-section>
         </q-item>
 
-        <q-item clickable :to="{name: 'arsipPimpinan'}">
+        <q-item clickable :to="{name: 'arsipPimpinan'}" active-class="active">
           <q-item-section avatar>
             <q-icon name="elderly" />
           </q-item-section>
@@ -147,7 +165,7 @@
           label="About"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'aboutPimpinan'}">
+          <q-item clickable :to="{name: 'aboutPimpinan'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -155,7 +173,7 @@
                 <q-item-label>Tentang Kami</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'aboutPimpinan'}">
+          <q-item clickable :to="{name: 'aboutPimpinan'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 

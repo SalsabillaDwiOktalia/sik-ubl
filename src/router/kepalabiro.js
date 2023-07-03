@@ -2,6 +2,11 @@ export default [
   {
     path: '/kepalabiro/',
     component: () => import('layouts/KepalaBiroLayout.vue'),
+    meta: {
+      kode: 'AA002',
+      karyawan: true,
+      akses: 1
+    },
     children: [
       {
         path: 'dashboard',

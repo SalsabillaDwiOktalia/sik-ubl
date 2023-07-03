@@ -4,7 +4,7 @@
       <q-card-section>
         Tambah Tugas
       </q-card-section>
-      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'inputJabatanAdmin'}"/>
+      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'dashboardKepalaBiro'}"/>
       <q-card-section>
         <q-form @submit="onSubmit">
           <q-select
@@ -27,7 +27,7 @@
             <template v-slot:append>
               <q-icon name="event" class="cursor-pointer">
                 <q-popup-proxy cover transition-show="scale" ref="deadline" transition-hide="scale">
-                  <q-date v-model="form.deadline" @click="$refs.deadline.hide()">
+                  <q-date v-model="form.deadline" @update:model-value="$refs.deadline.hide()">
                     <div class="row items-center justify-end">
                       <q-btn v-close-popup label="Close" color="primary" flat />
                     </div>

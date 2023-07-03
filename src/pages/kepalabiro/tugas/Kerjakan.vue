@@ -23,7 +23,7 @@ export default {
   data () {
     return {
       form: {
-        status: 2,
+        status: 3,
         ket_revisi: null
       },
       lampiran: null

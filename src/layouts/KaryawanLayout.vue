@@ -1,37 +1,55 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header unelevated class="bg-white">
       <q-toolbar>
         <q-btn
           flat
           dense
+          color="blue-grey-14"
           round
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title class="text-blue-grey-14">
+          SIK UBL
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div class="text-blue-grey-14">
+          <q-btn flat dense round class="q-pa-sm" icon="person" style="font-size: 14px;">
+            <q-menu>
+              <q-list>
+                <q-item @click="logout($router)" clickable>
+                  <q-item-section side>
+                    <q-icon name="logout"/>
+                  </q-item-section>
+                  <q-item-section>Logout</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
+        </div>
       </q-toolbar>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      bordered
+      content-class="bg-white"
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+    <q-list class="q-pa-xs">
+        <q-item class="justify-center text-center q-mb-md q-pt-md">
+          <div>
+            <q-avatar style="width: 100px;height: 100px" class="q-mb-md">
+              <img src="~assets/img/LOGO-UBL.png" alt="">
+            </q-avatar>
+            <div class="text-weight-bold">SIK UBL</div>
+            <div class="text-weight-bold">Hello, {{ $getProfile().username }}</div>
+          </div>
+        </q-item>
 
-        <q-item clickable :to="{name: 'dashboardKaryawan'}">
+        <q-item clickable active-class="active" v-ripple :to="{name: 'dashboardKaryawan'}">
           <q-item-section avatar>
             <q-icon name="dashboard" />
           </q-item-section>
@@ -46,7 +64,7 @@
           label="Tugas"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'LihatTugasKaryawan'}">
+          <q-item clickable :to="{name: 'LihatTugasKaryawan'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -54,7 +72,7 @@
                 <q-item-label>Lihat Tugas</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'TambahTugasKaryawan'}">
+          <q-item clickable :to="{name: 'TambahTugasKaryawan'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -69,7 +87,7 @@
           label="Laporan Penilaian"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'LaporanKaryawan'}">
+          <q-item clickable :to="{name: 'LaporanKaryawan'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -84,7 +102,7 @@
           label="Arsip"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'ArsipKuKepalaBiro'}">
+          <q-item clickable :to="{name: 'ArsipKuKepalaBiro'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -92,7 +110,7 @@
                 <q-item-label>ArsipKu</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'ArsipKaryawanKepalabiro'}">
+          <q-item clickable :to="{name: 'ArsipKaryawanKepalabiro'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -107,7 +125,7 @@
           label="About"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'TentangKamiKaryawan'}">
+          <q-item clickable :to="{name: 'TentangKamiKaryawan'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -115,7 +133,7 @@
                 <q-item-label>Tentang Kami</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'ProfilKaryawan'}">
+          <q-item clickable :to="{name: 'ProfilKaryawan'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -135,6 +153,7 @@
 <script>
 
 import { defineComponent, ref } from 'vue'
+import logout from '../helper/Logout'
 export default defineComponent({
   name: 'MainLayout',
 
@@ -142,6 +161,7 @@ export default defineComponent({
     const leftDrawerOpen = ref(false)
 
     return {
+      logout,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value

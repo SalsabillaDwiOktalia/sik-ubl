@@ -1,6 +1,9 @@
 import { boot } from 'quasar/wrappers'
 import { LocalStorage } from 'quasar'
 const listMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'Desember']
+function getProfile () {
+  return LocalStorage.getItem('dataUser')
+}
 
 export default boot(async ({ app }) => {
   // something to do
@@ -30,7 +33,9 @@ export default boot(async ({ app }) => {
   app.config.globalProperties.$setProfile = (data) => {
     LocalStorage.set('dataUser', data)
   }
-  app.config.globalProperties.$getProfile = (data) => {
-    return LocalStorage.getItem('dataUser')
-  }
+  app.config.globalProperties.$getProfile = getProfile
 })
+
+export {
+  getProfile
+}

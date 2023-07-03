@@ -19,7 +19,7 @@ export default {
   data () {
     return {
       form: {
-        status: 4,
+        status: 6,
         ket_revisi: null
       }
     }

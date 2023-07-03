@@ -2,6 +2,11 @@ export default [
   {
     path: '/pimpinan/',
     component: () => import('layouts/PimpinanLayout.vue'),
+    meta: {
+      kode: 'AA01',
+      karyawan: true,
+      akses: 1
+    },
     children: [
       {
         path: 'dashboard',
@@ -22,6 +27,11 @@ export default [
         path: 'tugas/revisi/:id',
         component: () => import('pages/pimpinan/tugas/Revisi.vue'),
         name: 'tugasRevisiPimpinan'
+      },
+      {
+        path: 'tugas/detail/:id',
+        component: () => import('pages/pimpinan/tugas/Detail.vue'),
+        name: 'tugasDetailPimpinan'
       }
     ]
   }

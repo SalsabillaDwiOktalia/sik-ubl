@@ -4,7 +4,7 @@
       <q-card-section>
         Input Unit Kerja
       </q-card-section>
-      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'inputUnitKerjaAdmin'}"/>
+      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'unitKerjaAdmin'}"/>
       <q-card-section>
         <q-form @submit="onSubmit">
           <q-input label="Nama Unit Kerja" v-model="form.nama_unit_kerja" />

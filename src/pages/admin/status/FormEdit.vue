@@ -4,7 +4,7 @@
       <q-card-section>
         Input Karyawan
       </q-card-section>
-      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'inputStatusAdmin'}"/>
+      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'statusAdmin'}"/>
       <q-card-section>
         <q-form @submit="onSubmit">
           <q-input label="Nama Status" v-model="form.nama_status" />

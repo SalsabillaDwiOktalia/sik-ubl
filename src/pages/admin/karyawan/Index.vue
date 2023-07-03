@@ -41,6 +41,11 @@
               <q-td key="tanggal_masuk_kerja" :props="props">
                 {{ $parseDate(props.row.tanggal_masuk_kerja).fullDate }}
               </q-td>
+              <q-td key="kontrak" :props="props">
+                <div class="justify-center q-gutter-x-xs">
+                  <q-btn :to="{name: 'inputKontrakAdmin', params: {idKaryawan: props.row.id_karyawan}}" color="primary" :disable="props.row.kontrak.length > 0" label="Tambah Kontrak" unelevated outline dense />
+                </div>
+              </q-td>
               <q-td key="jabatan" :props="props">
                 <div class="justify-center q-gutter-x-xs">
                   <q-btn color="primary" unelevated outline @click="openJabatan(props.row)" icon="visibility" dense />
@@ -193,6 +198,7 @@ export default {
         { name: 'nidn', align: 'left', label: 'NIDN', field: 'nidn' },
         { name: 'tanggal_lahir', align: 'left', label: 'Tanggal Lahir', field: 'tanggal_lahir' },
         { name: 'tanggal_masuk_kerja', align: 'left', label: 'Tanggal Masuk Kerja', field: 'tanggal_masuk_kerja' },
+        { name: 'kontrak', align: 'left', label: 'Kontrak', field: 'kontrak' },
         { name: 'jabatan', align: 'left', label: 'Jabatan', field: 'jabatan' },
         { name: 'aksi', align: 'left', label: 'Aksi', field: 'aksi' }
       ],

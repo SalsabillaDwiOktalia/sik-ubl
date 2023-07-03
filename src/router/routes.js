@@ -21,13 +21,18 @@ const routes = [
   },
   {
     path: '/login',
+    name: 'loginPage',
     component: () => import('pages/guest/Login.vue')
   },
   {
     path: '/karyawan/',
     component: () => import('layouts/GeneralKaryawan.vue'),
+    meta: {
+      karyawan: true,
+      akses: 1
+    },
     children: [
-      { name: 'indexKaryawan', path: '', component: () => import('pages/karyawan/Index.vue') }
+      { name: 'indexKaryawan', meta: { mainRoute: true }, path: 'main', component: () => import('pages/karyawan/Index.vue') }
     ]
   },
 

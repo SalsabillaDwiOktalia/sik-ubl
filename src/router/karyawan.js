@@ -2,6 +2,11 @@ export default [
   {
     path: '/karyawan/',
     component: () => import('layouts/KaryawanLayout.vue'),
+    meta: {
+      kode: 'AA003',
+      karyawan: true,
+      akses: 1
+    },
     children: [
       {
         path: 'dashboard',

@@ -2,6 +2,11 @@ export default [
   {
     path: '/admin/',
     component: () => import('layouts/AdminLayout.vue'),
+    meta: {
+      akses: 0,
+      admin: true,
+      kode: null
+    },
     children: [
       {
         path: 'dashboard',
@@ -22,6 +27,16 @@ export default [
         path: 'karyawan/edit/:id',
         component: () => import('pages/admin/karyawan/FormEdit.vue'),
         name: 'editKaryawanAdmin'
+      },
+      {
+        path: 'kontrak',
+        component: () => import('pages/admin/kontrak/Index.vue'),
+        name: 'kontrakAdmin'
+      },
+      {
+        path: 'kontrak/input/:idKaryawan',
+        component: () => import('pages/admin/kontrak/FormInputKontrak.vue'),
+        name: 'inputKontrakAdmin'
       },
       {
         path: 'status',

@@ -2,6 +2,10 @@ export default [
   {
     path: '/kontrak/',
     component: () => import('layouts/KontrakLayout.vue'),
+    meta: {
+      kode: 'AA004',
+      karyawan: true
+    },
     children: [
       {
         path: 'dashboard',
@@ -10,7 +14,7 @@ export default [
       },
       {
         path: 'datakontrak',
-        component: () => import('pages/kontrak/datakontrak/Index.vue'),
+        component: () => import('pages/kontrak/datakontrak/Dosen.vue'),
         name: 'dataKontrak'
       },
       {

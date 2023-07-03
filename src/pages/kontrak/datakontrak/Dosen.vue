@@ -2,9 +2,9 @@
   <q-page padding>
     <q-card flat>
       <q-card-section>
-        Tambah Tugas
+        Kontrak Kerja Pegawai
       </q-card-section>
-      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'tugasPimpinan'}"/>
+      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'dashboardKepalaBiro'}"/>
       <q-card-section>
         <q-form @submit="onSubmit">
           <q-select
@@ -80,9 +80,7 @@ export default {
         .finally(() => this.$hide())
         .then(res => {
           if (this.$parseResponse(res.data)) {
-            this.$router.push({
-              name: 'tugasPimpinan'
-            })
+            this.$router.back()
           }
         })
     },

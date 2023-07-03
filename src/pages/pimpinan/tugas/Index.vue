@@ -32,7 +32,7 @@
               {{ props.row.nama_unit_kerja }}
             </q-td>
             <q-td key="deadline" :props="props">
-              {{ props.row.deadline }}
+              {{ $parseDate(props.row.deadline).fullDate }}
             </q-td>
             <q-td key="lampiran" :props="props">
               <div class="row q-gutter-x-xs">
@@ -51,9 +51,10 @@
             </q-td>
             <q-td key="aksi" :props="props">
               <div class="justify-center q-gutter-x-xs">
-                <q-btn label="Revisi" :disable="props.row.status !== 2" icon="close" outline color="negative" :to="{name: 'tugasRevisiPimpinan', params:{id:props.row.id_tugas}}" />
-                <q-btn label="Selesai" @click="selesai(props.row.id_tugas)" :disable="props.row.status !== 2" icon="done" outline color="positive"/>
-                <q-btn label="Detail" unelevated icon="info" color="primary"/>
+                <q-btn @click="selesai(props.row.id_tugas, 4, 'meninjau tugas')" label="Tinjau Tugas" :disable="props.row.status !== 3" icon="close" outline color="negative"/>
+                <q-btn label="Revisi" :disable="props.row.status !== 4" icon="close" outline color="negative" :to="{name: 'tugasRevisiPimpinan', params:{id:props.row.id_tugas}}" />
+                <q-btn label="Selesai" @click="selesai(props.row.id_tugas,  5, '')" :disable="props.row.status !== 4" icon="done" outline color="positive"/>
+                <q-btn label="Detail" unelevated icon="info" color="primary" :to="{name: 'tugasDetailPimpinan', params:{id:props.row.id_tugas}}" />
               </div>
             </q-td>
           </q-tr>
@@ -98,15 +99,20 @@ export default {
           }
         })
     },
-    selesai (id) {
+    selesai (id, status, msg) {
       this.$q.dialog({
-        title: 'konfirmasi',
-        message: 'apakah kamu yakin ?',
+        title: 'Confirm',
+        message: `Apakah anda yakin ${msg}?`,
         cancel: true,
         persistent: true
       }).onOk(() => {
         this.$showLoading()
-        this.$axios.get(`tugas_pimpinanunit/update/selesai/${id}`)
+        const formData = new FormData()
+        formData.append('data', JSON.stringify({
+          status,
+          ket_revisi: null
+        }))
+        this.$axios.put(`tugas_pimpinanunit/update/status/${id}`, formData)
           .finally(() => this.$hide())
           .then(res => {
             if (this.$parseResponse(res.data)) {
@@ -114,6 +120,21 @@ export default {
             }
           })
       })
+      // this.$q.dialog({
+      //   title: 'konfirmasi',
+      //   message: 'apakah kamu yakin ?',
+      //   cancel: true,
+      //   persistent: true
+      // }).onOk(() => {
+      //   this.$showLoading()
+      //   this.$axios.get(`tugas_pimpinanunit/update/selesai/${id}`)
+      //     .finally(() => this.$hide())
+      //     .then(res => {
+      //       if (this.$parseResponse(res.data)) {
+      //         this.getData()
+      //       }
+      //     })
+      // })
     }
   }
 }
