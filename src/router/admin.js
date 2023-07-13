@@ -39,6 +39,26 @@ export default [
         name: 'inputKontrakAdmin'
       },
       {
+        path: 'kontrak/pensiun/:id/:id_kontrak',
+        component: () => import('pages/admin/kontrak/FormInputPensiun.vue'),
+        name: 'inputPensiunAdmin'
+      },
+      {
+        path: 'kontrak/mengundurkan/:id',
+        component: () => import('pages/admin/kontrak/FormInputMengundurkan.vue'),
+        name: 'inputMengundurkandiriAdmin'
+      },
+      {
+        path: 'kontrak/perpanjang/:id/:id_kontrak',
+        component: () => import('pages/admin/kontrak/FormPerpanjang.vue'),
+        name: 'inputPerpanjangKontrakAdmin'
+      },
+      {
+        path: 'kontrak/detail/:id_kontrak',
+        component: () => import('pages/admin/kontrak/Detail.vue'),
+        name: 'detailKontrakAdmin'
+      },
+      {
         path: 'status',
         component: () => import('pages/admin/status/Index.vue'),
         name: 'statusAdmin'

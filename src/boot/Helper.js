@@ -5,6 +5,11 @@ function getProfile () {
   return LocalStorage.getItem('dataUser')
 }
 
+function formatNumber (number) {
+  const val = (number / 1).toFixed(0).replace('.', '.')
+  return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+}
+
 export default boot(async ({ app }) => {
   // something to do
   app.config.globalProperties.$parseDate = (date) => {
@@ -34,6 +39,9 @@ export default boot(async ({ app }) => {
     LocalStorage.set('dataUser', data)
   }
   app.config.globalProperties.$getProfile = getProfile
+  app.config.globalProperties.$formatNumber = (number) => {
+    return `Rp.${formatNumber(number)},00`
+  }
 })
 
 export {

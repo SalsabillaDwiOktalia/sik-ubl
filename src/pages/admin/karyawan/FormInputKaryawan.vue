@@ -61,9 +61,9 @@
           <div>Agama</div>
           <div class="q-gutter-sm">
             <q-radio v-model="form.agama" val="Islam" label="Islam" />
-            <q-radio v-model="form.agama" val="Prostan" label="Prostan" />
-            <q-radio v-model="form.agama" val="Katolik" label="Katolik" />
-            <q-radio v-model="form.agama" val="Budha" label="Budha" />
+            <q-radio v-model="form.agama" val="Protestan" label="Protestan" />
+            <q-radio v-model="form.agama" val="Khatolik" label="Khatolik" />
+            <q-radio v-model="form.agama" val="Buddha" label="Buddha" />
             <q-radio v-model="form.agama" val="Hindu" label="Hindu" />
             <q-radio v-model="form.agama" val="Khonghucu" label="Khonghucu" />
           </div>
@@ -147,7 +147,7 @@ export default {
           if (umur > 45) {
             this.rejectUmur()
           } else {
-            const sisaUmurKerja = 70 - umur
+            const sisaUmurKerja = 65 - umur
             const tahunPensiun = new Date().getFullYear() + sisaUmurKerja
             this.form.tgl_pensiun = `${tahunPensiun}/${new Date().getMonth() + 1}/${new Date().getDate()}`
           }
@@ -165,8 +165,90 @@ export default {
               this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
             }
           }
-        } else if (kategori === 2) {
-          console.log('satpam')
+        } else if (kategori === 3) {
+          if (umur < 35 || umur > 44) {
+            this.rejectUmur()
+          } else {
+            const umurAddMasaKerja = umur + 10
+            if (umurAddMasaKerja <= 45) {
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + 10
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            } else {
+              const lebihKerja = 45 - umur
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + lebihKerja
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            }
+          }
+        } else if (kategori === 4 || kategori === 5) {
+          if (umur < 30 || umur > 49) {
+            this.rejectUmur()
+          } else {
+            const umurAddMasaKerja = umur + 10
+            if (umurAddMasaKerja <= 50) {
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + 10
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            } else {
+              const lebihKerja = 50 - umur
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + lebihKerja
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            }
+          }
+        } else if (kategori === 6) {
+          if (umur < 25 || umur > 39) {
+            this.rejectUmur()
+          } else {
+            const umurAddMasaKerja = umur + 10
+            if (umurAddMasaKerja <= 40) {
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + 10
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            } else {
+              const lebihKerja = 40 - umur
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + lebihKerja
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            }
+          }
+        } else if (kategori === 7) {
+          if (umur < 22 || umur > 29) {
+            this.rejectUmur()
+          } else {
+            const umurAddMasaKerja = umur + 10
+            if (umurAddMasaKerja <= 30) {
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + 10
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            } else {
+              const lebihKerja = 30 - umur
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + lebihKerja
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            }
+          }
+        } else if (kategori === 8) {
+          if (umur < 17 || umur > 24) {
+            this.rejectUmur()
+          } else {
+            const umurAddMasaKerja = umur + 10
+            if (umurAddMasaKerja <= 25) {
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + 10
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            } else {
+              const lebihKerja = 25 - umur
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + lebihKerja
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            }
+          }
+        } else if (kategori === 9) {
+          if (umur < 17 || umur > 49) {
+            this.rejectUmur()
+          } else {
+            const umurAddMasaKerja = umur + 10
+            if (umurAddMasaKerja <= 50) {
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + 10
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            } else {
+              const lebihKerja = 50 - umur
+              const tahunPensiun = new Date(this.form.tanggal_masuk_kerja).getFullYear() + lebihKerja
+              this.form.tgl_pensiun = `${tahunPensiun}/${this.getBulanTgl()}`
+            }
+          }
         } else {
           this.form.uang_pensiun = 0
         }

@@ -29,17 +29,53 @@
               <q-td key="status" :props="props">
                 {{ props.row.status_karyawan_statusTostatus.nama_status }}
               </q-td>
-              <q-td key="gajiPokok" :props="props">
-                {{ props.row.status_karyawan_statusTostatus.gaji_pokok }}
+              <q-td key="gaji_pokok" :props="props">
+                {{ $formatNumber(props.row.gaji_pokok) }}
               </q-td>
               <q-td key="nidn" :props="props">
                 {{ props.row.nidn }}
+              </q-td>
+              <q-td key="nik" :props="props">
+                {{ props.row.nik }}
+              </q-td>
+              <q-td key="jenis_kelamin" :props="props">
+                {{ props.row.jenis_kelamin }}
+              </q-td>
+              <q-td key="agama" :props="props">
+                {{ props.row.agama }}
+              </q-td>
+              <q-td key="alamat" :props="props">
+                {{ props.row.alamat }}
+              </q-td>
+              <q-td key="kategori" :props="props">
+                {{ props.row.kategori_karyawan.nama_kategori }}
               </q-td>
               <q-td key="tanggal_lahir" :props="props">
                 {{ $parseDate(props.row.tanggal_lahir).fullDate }}
               </q-td>
               <q-td key="tanggal_masuk_kerja" :props="props">
                 {{ $parseDate(props.row.tanggal_masuk_kerja).fullDate }}
+              </q-td>
+              <q-td key="tgl_pensiun" :props="props">
+                {{ $parseDate(props.row.tgl_pensiun).fullDate }}
+              </q-td>
+              <q-td key="status" :props="props">
+                <div v-if="props.row.kontrak.length === 0">
+                  <q-badge color="positive">
+                    Baru Diinput
+                  </q-badge>
+                </div>
+                <div v-else>
+                  <q-badge color="positive" v-if="props.row.kontrak[0].jenis_kontrak === 1">
+                    Kontrak Baru
+                  </q-badge>
+                  <q-badge color="positive" v-else-if="props.row.kontrak[0].jenis_kontrak === 2">
+                    Kontrak Perpanjang
+                  </q-badge>
+                  <q-badge color="negative" v-else-if="props.row.kontrak[0].jenis_kontrak === 3">
+                    Kontrak Pensiun
+                  </q-badge>
+                </div>
               </q-td>
               <q-td key="kontrak" :props="props">
                 <div class="justify-center q-gutter-x-xs">
@@ -180,6 +216,14 @@
             </q-input>
             <q-input label="No. SK" v-model="form.no_sk" />
             <q-btn class="q-mt-md" label="Submit Jabatan Karyawan" color="primary" unelevated type="submit" />
+            <q-td key="status" :props="props">
+                <q-badge color="positive" v-if="props.row.status === 1">
+                  Aktif
+                </q-badge>
+                <q-badge color="negative" v-else>
+                  Tidak Aktif
+                </q-badge>
+              </q-td>
           </q-form>
         </q-card-section>
       </q-card>
@@ -194,10 +238,17 @@ export default {
         { name: 'id_karyawan', align: 'left', label: ' ID Karyawan', field: 'id_karyawan' },
         { name: 'nama_karyawan', align: 'left', label: 'Nama Karyawan', field: 'nama_karyawan' },
         { name: 'status', align: 'left', label: 'Status', field: 'status' },
-        { name: 'gajiPokok', align: 'left', label: 'Gaji Pokok', field: 'gajiPokok' },
+        { name: 'gaji_pokok', align: 'left', label: 'Gaji Pokok', field: 'gaji_pokok' },
         { name: 'nidn', align: 'left', label: 'NIDN', field: 'nidn' },
+        { name: 'nik', align: 'left', label: 'NIK', field: 'nik' },
+        { name: 'jenis_kelamin', align: 'left', label: 'Jenis Kelamin', field: 'jenis_kelamin' },
+        { name: 'agama', align: 'left', label: 'Agama', field: 'agama' },
+        { name: 'alamat', align: 'left', label: 'Alamat', field: 'alamat' },
+        { name: 'kategori', align: 'left', label: 'Katagori', field: 'kategori' },
         { name: 'tanggal_lahir', align: 'left', label: 'Tanggal Lahir', field: 'tanggal_lahir' },
         { name: 'tanggal_masuk_kerja', align: 'left', label: 'Tanggal Masuk Kerja', field: 'tanggal_masuk_kerja' },
+        { name: 'tgl_pensiun', align: 'left', label: 'Tanggal Pensiun', field: 'tgl_pensiun' },
+        { name: 'status_karyawan', align: 'left', label: 'Status Karyawan', field: 'status_karyawan' },
         { name: 'kontrak', align: 'left', label: 'Kontrak', field: 'kontrak' },
         { name: 'jabatan', align: 'left', label: 'Jabatan', field: 'jabatan' },
         { name: 'aksi', align: 'left', label: 'Aksi', field: 'aksi' }

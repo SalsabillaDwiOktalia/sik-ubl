@@ -9,15 +9,15 @@
         <q-form @submit="onSubmit">
           <q-select
             label="Jabatan Pemberi Tugas"
-            v-model="id_jabatan_pimpinan_unit"
-            :options="listId_jabatan_pimpinan_unit"
+            v-model="kepalaBiro"
+            :options="listKepalaBiro"
             option-value="kode_jabatan"
             :option-label="r => `${r.nama_jabatan} (${r.keterangan})`"
           />
           <q-select
             label="Ditujukan Ke"
-            v-model="kepalaBiro"
-            :options="listKepalaBiro"
+            v-model="jabatan_karyawan"
+            :options="listJabatan_karyawan"
             option-value="id_jabatan_karyawan"
             :option-label="r => `${r.nama_jabatan} ${r.nama_unit_kerja} (${r.nama_karyawan})`"
           />
@@ -76,7 +76,7 @@ export default {
       const formData = new FormData()
       formData.append('data', JSON.stringify(this.form))
       formData.append('lampiran', this.lampiran)
-      this.$axios.post('/tugas_pimpinanunit/create', formData)
+      this.$axios.post('/tugas_kepalabiro/create', formData)
         .finally(() => this.$hide())
         .then(res => {
           if (this.$parseResponse(res.data)) {

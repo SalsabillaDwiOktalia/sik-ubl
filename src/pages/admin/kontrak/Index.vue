@@ -39,15 +39,21 @@
                 {{ $parseDate(props.row.tgl_habis_kontrak).fullDate }}
               </q-td>
               <q-td key="jenis_kontrak" :props="props">
-                <q-badge color="positive" v-if="props.row.status === 1">
+                <q-badge color="positive" v-if="props.row.jenis_kontrak === 1">
                   Kontrak Baru
                 </q-badge>
-                <q-badge color="positive" v-else-if="props.row.status === 2">
+                <q-badge color="positive" v-else-if="props.row.jenis_kontrak === 2">
                   Kontrak Perpanjang
                 </q-badge>
-                <q-badge color="negative" v-else>
+                <q-badge color="negative" v-else-if="props.row.jenis_kontrak === 3">
                   Kontrak Pensiun
                 </q-badge>
+              </q-td>
+              <q-td key="ket_kontrak" :props="props">
+                <div class="justify-center q-gsssutter-x-xs">
+                  <q-btn :disable="props.row.jenis_kontrak === 3" :to="{name:'inputPerpanjangKontrakAdmin', params:{id:props.row.id_karyawan, id_kontrak:props.row.id_kontrak}}" color="primary" label="Perpanjang Kontrak" unelevated outline dense />
+                  <q-btn :disable="props.row.jenis_kontrak === 3" :to="{name:'inputPensiunAdmin', params:{id:props.row.id_karyawan, id_kontrak:props.row.id_kontrak}}" color="primary" label="Pensiun" unelevated outline dense />
+                </div>
               </q-td>
               <q-td key="status" :props="props">
                 <q-badge color="positive" v-if="props.row.status === 1">
@@ -57,10 +63,14 @@
                   Tidak Aktif
                 </q-badge>
               </q-td>
+              <q-td key="ket_kontrak" :props="props">
+                {{ props.row.ket_kontrak }}
+              </q-td>
               <q-td key="aksi" :props="props">
                 <div class="justify-center q-gutter-x-xs">
                   <q-btn label="edit" unelevated icon="edit" color="warning" :to="{name:'editKaryawanAdmin', params:{id:props.row.id_karyawan}}"/>
                   <q-btn label="hapus" unelevated icon="delete" color="negative" @click="hapus(props.row.id_karyawan)"/>
+                  <q-btn label="Detail" unelevated icon="info" color="primary" :to="{name: 'detailKontrakAdmin', params:{id_kontrak:props.row.id_kontrak}}" />
                 </div>
               </q-td>
             </q-tr>
@@ -82,7 +92,9 @@ export default {
         { name: 'tgl_kontrak', align: 'left', label: 'Tanggal Kontrak', field: 'tgl_kontrak' },
         { name: 'tgl_habis_kontrak', align: 'left', label: 'Habis Kontrak', field: 'tgl_habis_kontrak' },
         { name: 'jenis_kontrak', align: 'left', label: 'Jenis Kontrak', field: 'jenis_kontrak' },
-        { name: 'status', align: 'left', label: 'Status', field: 'status' },
+        { name: 'ket_kontrak', align: 'left', label: 'Keterangan Kontrak', field: 'ket_kontrak' },
+        { name: 'status', align: 'left', label: 'Status Kontrak', field: 'status' },
+        { name: 'ket_kontrak', align: 'left', label: 'Keterangan', field: 'ket_kontrak' },
         { name: 'aksi', align: 'left', label: 'Aksi', field: 'aksi' }
       ],
       rows: [],
