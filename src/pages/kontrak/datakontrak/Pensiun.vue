@@ -2,9 +2,9 @@
   <q-page padding>
     <q-card flat>
       <q-card-section>
-        Input Pensiun
+        Input Pensiun Karyawan
       </q-card-section>
-      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'kontrakAdmin'}"/>
+      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'dataKontrak'}"/>
       <q-card-section>
         <q-form @submit="onSubmit">
           <q-input label="Nomor SK" v-model="form.no_sk"/>

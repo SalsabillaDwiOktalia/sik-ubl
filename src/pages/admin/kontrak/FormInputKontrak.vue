@@ -48,6 +48,7 @@ export default {
     }
   },
   methods: {
+
     onSubmit () {
       this.$showLoading()
       this.form.id_karyawan = this.$route.params.idKaryawan

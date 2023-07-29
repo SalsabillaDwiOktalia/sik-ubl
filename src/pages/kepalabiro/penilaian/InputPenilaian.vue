@@ -2,32 +2,24 @@
   <q-page padding>
     <q-card flat>
       <q-card-section>
-        Kontrak Kerja Pegawai
+        Input Penilaian Karyawan
       </q-card-section>
       <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'dashboardKepalaBiro'}"/>
       <q-card-section>
         <q-form @submit="onSubmit">
-          <q-select
-            label="Jabatan Pemberi Tugas"
-            v-model="id_jabatan_pimpinan_unit"
-            :options="listId_jabatan_pimpinan_unit"
-            option-value="kode_jabatan"
-            :option-label="r => `${r.nama_jabatan} (${r.keterangan})`"
+          <div>
+            <q-select
+            label="Periode Penilaian"
+            v-model="form.periode_penilaian"
+            :options="opsiPeriodePenilaian"
+            :rules="[  val => val && val.length > 0 || 'Periode Penilaian  tidak boleh 0 / kosong !']"
           />
-          <q-select
-            label="Ditujukan Ke"
-            v-model="kepalaBiro"
-            :options="listKepalaBiro"
-            option-value="id_jabatan_karyawan"
-            :option-label="r => `${r.nama_jabatan} ${r.nama_unit_kerja} (${r.nama_karyawan})`"
-          />
-          <q-input label="Judul Tugas" v-model="form.judul_tugas" />
-          <q-input label="Deskripsi Tugas" v-model="form.deskripsi_tugas" />
-          <q-input label="Deadline" v-model="form.deadline" @click="$refs.deadline.show()" mask="date" :rules="['date']">
+          </div>
+          <q-input label="Tanggal Penilaian" v-model="form.tanggal_penilaian" @click="$refs.tanggal_penilaian.show()" mask="date" :rules="['date']">
             <template v-slot:append>
               <q-icon name="event" class="cursor-pointer">
-                <q-popup-proxy cover transition-show="scale" ref="deadline" transition-hide="scale">
-                  <q-date v-model="form.deadline" @update:model-value="$refs.deadline.hide()">
+                <q-popup-proxy cover transition-show="scale" ref="tanggalPenilaian" transition-hide="scale">
+                  <q-date v-model="form.tanggal_penilaian" @update:model-value="$refs.tanggalPenilaian.hide();hitung()">
                     <div class="row items-center justify-end">
                       <q-btn v-close-popup label="Close" color="primary" flat />
                     </div>
@@ -36,12 +28,21 @@
               </q-icon>
             </template>
           </q-input>
-          <q-file outlined v-model="lampiran">
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn label="Submit Karyawan" color="primary" unelevated type="submit" />
+          <q-select
+            label="Pemberi Nilai"
+            v-model="kepalaBiro"
+            :options="listKepalaBiro"
+            option-value="kode_jabatan"
+            :option-label="r => `${r.nama_jabatan} (${r.nama_karyawan}) (${r.keterangan})`"
+          />
+          <q-select
+            label="Ditujukan Ke"
+            v-model="karyawan"
+            :options="listkaryawan"
+            option-value="id_karyawan"
+            :option-label="r => `${r.nama_jabatan} ${r.nama_unit_kerja} (${r.nama_karyawan})`"
+          />
+          <q-btn label="Submit Karyawan" color="primary" unelevated type="submit" :to="{name: 'SubmitPenilaian'}" />
         </q-form>
       </q-card-section>
     </q-card>
@@ -55,13 +56,14 @@ export default {
         judul_tugas: null,
         id_kepala_biro: null,
         id_jabatan_pimpinan_unit: null,
-        deadline: null
+        tanggal_penilaian: null
+
       },
       lampiran: null,
       kepalaBiro: null,
-      id_jabatan_pimpinan_unit: null,
+      id_karyawan: null,
       listKepalaBiro: [],
-      listId_jabatan_pimpinan_unit: []
+      listkaryawan: []
     }
   },
   created () {
@@ -72,11 +74,11 @@ export default {
     onSubmit () {
       this.$showLoading()
       this.form.id_kepala_biro = this.kepalaBiro.id_jabatan_karyawan
-      this.form.id_jabatan_pimpinan_unit = this.id_jabatan_pimpinan_unit.id_jabatan_karyawan
+      this.form.id_karyawan = this.id_karyawan.id_jabatan_karyawan
       const formData = new FormData()
       formData.append('data', JSON.stringify(this.form))
       formData.append('lampiran', this.lampiran)
-      this.$axios.post('/tugas_pimpinanunit/create', formData)
+      this.$axios.post('/tugas_kepalabiro/create', formData)
         .finally(() => this.$hide())
         .then(res => {
           if (this.$parseResponse(res.data)) {

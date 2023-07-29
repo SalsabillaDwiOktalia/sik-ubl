@@ -64,73 +64,28 @@
           label="Data Kontrak Karyawan"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'dataDosenKontrak'}" active-class="active">
-            <q-item-section avatar>
-            </q-item-section>
+        <q-item clickable :to="{name: 'dataKontrakKaryawan'}" active-class="active">
+          <q-item-section avatar>
+            <!-- <q-icon name="edit_document" /> -->
+          </q-item-section>
 
-              <q-item-section>
-                <q-item-label>Dosen</q-item-label>
-              </q-item-section>
-          </q-item>
-          <q-item clickable :to="{name: 'dataKaryawanKontrak'}" active-class="active">
-            <q-item-section avatar>
+            <q-item-section>
+              <q-item-label>Data Karyawan</q-item-label>
             </q-item-section>
+        </q-item>
 
-              <q-item-section>
-                <q-item-label>Karyawan admin</q-item-label>
-              </q-item-section>
-          </q-item>
-          <q-item clickable :to="{name: 'dataMagangalmKontrak'}" active-class="active">
-            <q-item-section avatar>
+        <q-item clickable :to="{name: 'dataKontrak'}" active-class="active">
+          <q-item-section avatar>
+            <!-- <q-icon name="edit_document" /> -->
+          </q-item-section>
+
+            <q-item-section>
+              <q-item-label>Data Kontrak</q-item-label>
             </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Magang (Alumni)</q-item-label>
-              </q-item-section>
-          </q-item>
-          <q-item clickable :to="{name: 'dataMagangmhsKontrak'}" active-class="active">
-            <q-item-section avatar>
-            </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Magang (Mahasiswa)</q-item-label>
-              </q-item-section>
-          </q-item>
-          <q-item clickable :to="{name: 'dataPerbantuanKontrak'}" active-class="active">
-            <q-item-section avatar>
-            </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Tenaga Perbantuan</q-item-label>
-              </q-item-section>
-          </q-item>
-          <q-item clickable :to="{name: 'dataObKontrak'}" active-class="active">
-            <q-item-section avatar>
-            </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Office Boy</q-item-label>
-              </q-item-section>
-          </q-item>
-          <q-item clickable :to="{name: 'dataSatpamKontrak'}" active-class="active">
-            <q-item-section avatar>
-            </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Satpam</q-item-label>
-              </q-item-section>
-          </q-item>
-          <q-item clickable :to="{name: 'dataSupirKontrak'}" active-class="active">
-            <q-item-section avatar>
-            </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Supir</q-item-label>
-              </q-item-section>
-          </q-item>
+        </q-item>
         </q-expansion-item>
 
-        <q-item clickable :to="{name: 'laporanPimpinan'}" active-class="active">
+        <!-- <q-item clickable :to="{name: 'laporanPimpinan'}" active-class="active">
           <q-item-section avatar>
             <q-icon name="edit_document" />
           </q-item-section>
@@ -138,7 +93,7 @@
             <q-item-section>
               <q-item-label>Input Kontrak Kerja</q-item-label>
             </q-item-section>
-        </q-item>
+        </q-item> -->
 
         <q-item clickable :to="{name: 'arsipPimpinan'}" active-class="active">
           <q-item-section avatar>
@@ -147,16 +102,6 @@
 
             <q-item-section>
               <q-item-label>Pemberitahuan</q-item-label>
-            </q-item-section>
-        </q-item>
-
-        <q-item clickable :to="{name: 'arsipPimpinan'}" active-class="active">
-          <q-item-section avatar>
-            <q-icon name="elderly" />
-          </q-item-section>
-
-            <q-item-section>
-              <q-item-label>Pensiunan</q-item-label>
             </q-item-section>
         </q-item>
 

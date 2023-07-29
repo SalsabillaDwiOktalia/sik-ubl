@@ -59,15 +59,28 @@
             </q-item-section>
         </q-item>
 
-        <q-item clickable :to="{name: 'TugasDosen'}" active-class="active">
-          <q-item-section avatar>
-            <q-icon name="library_books" />
-          </q-item-section>
-
-            <q-item-section>
-              <q-item-label>Tugas Opsional</q-item-label>
+        <q-expansion-item
+          icon="school"
+          label="Tri Dharma"
+          :content-inset-level="0"
+        >
+          <q-item clickable :to="{name: 'UploadTriDharma'}" active-class="active">
+            <q-item-section avatar>
             </q-item-section>
-      </q-item>
+
+              <q-item-section>
+                <q-item-label>Upload Tri Dharma</q-item-label>
+              </q-item-section>
+          </q-item>
+          <q-item clickable :to="{name: 'LihatJumlahSKS '}" active-class="active">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Lihat Jumlah SKS</q-item-label>
+              </q-item-section>
+          </q-item>
+        </q-expansion-item>
 
       <q-item clickable :to="{name: 'ArsipDosen'}" active-class="active">
           <q-item-section avatar>

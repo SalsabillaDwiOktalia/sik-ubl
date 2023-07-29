@@ -2,16 +2,22 @@ export default [
   {
     path: '/dosen/',
     component: () => import('layouts/DosenLayout.vue'),
+    meta: {
+      kode: 'AA005',
+      karyawan: true,
+      akses: 1
+    },
     children: [
+
       {
         path: 'dashboard',
-        component: () => import('pages/dosen/Index.vue'),
+        component: () => import('src/pages/dosen/Index.vue'),
         name: 'dashboardDosen'
       },
       {
-        path: 'tugas',
+        path: 'tridharma',
         component: () => import('pages/dosen/tugas/Index.vue'),
-        name: 'tugasDosen'
+        name: 'UploadTriDharma'
       },
       {
         path: 'arsip',

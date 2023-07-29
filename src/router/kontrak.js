@@ -13,54 +13,34 @@ export default [
         name: 'dashboardKontrak'
       },
       {
+        path: 'datakontrakKaryawan',
+        component: () => import('src/pages/kontrak/datakontrak/DataKaryawan.vue'),
+        name: 'dataKontrakKaryawan'
+      },
+      {
         path: 'datakontrak',
-        component: () => import('pages/kontrak/datakontrak/Dosen.vue'),
+        component: () => import('src/pages/kontrak/datakontrak/DataKontrak.vue'),
         name: 'dataKontrak'
       },
       {
-        path: 'datakontrak/dosen',
-        component: () => import('pages/kontrak/datakontrak/Index.vue'),
-        name: 'dataDosenKontrak'
+        path: 'datakontrak/input/:id_karyawan',
+        component: () => import('src/pages/kontrak/datakontrak/FormInputKontrak.vue'),
+        name: 'inputKontrak'
       },
       {
-        path: 'datakontrak/karyawan',
-        component: () => import('pages/kontrak/datakontrak/Index.vue'),
-        name: 'dataKaryawanKontrak'
+        path: 'datakontrak/perpanjang/:id/:id_kontrak',
+        component: () => import('src/pages/kontrak/datakontrak/PerpanjangKontrak.vue'),
+        name: 'perpanjangKontrak'
       },
       {
-        path: 'datakontrak/magangalm',
-        component: () => import('pages/kontrak/datakontrak/Index.vue'),
-        name: 'dataMagangalmKontrak'
+        path: 'datakontrak/pensiun/:id/:id_kontrak',
+        component: () => import('src/pages/kontrak/datakontrak/Pensiun.vue'),
+        name: 'PensiunKontrak'
       },
       {
-        path: 'datakontrak/magangmhs',
-        component: () => import('pages/kontrak/datakontrak/Index.vue'),
-        name: 'dataMagangmhsKontrak'
-      },
-      {
-        path: 'datakontrak/perbantuan',
-        component: () => import('pages/kontrak/datakontrak/Index.vue'),
-        name: 'dataPerbantuanKontrak'
-      },
-      {
-        path: 'datakontrak/ob',
-        component: () => import('pages/kontrak/datakontrak/Index.vue'),
-        name: 'dataObKontrak'
-      },
-      {
-        path: 'datakontrak/satpam',
-        component: () => import('pages/kontrak/datakontrak/Index.vue'),
-        name: 'dataSatpamKontrak'
-      },
-      {
-        path: 'datakontrak/supir',
-        component: () => import('pages/kontrak/datakontrak/Index.vue'),
-        name: 'dataSupirKontrak'
-      },
-      {
-        path: 'laporan',
-        component: () => import('pages/pimpinan/laporan/Index.vue'),
-        name: 'laporanPimpinan'
+        path: 'datakontrak/detail/:id',
+        component: () => import('src/pages/kontrak/datakontrak/Detail.vue'),
+        name: 'datakontrakDetail'
       },
       {
         path: 'arsip',

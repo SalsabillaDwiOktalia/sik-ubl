@@ -3,11 +3,13 @@
     <q-card flat>
       <q-card-section>
         <q-table
+          :pagination="pagination"
           flat
           title="Karyawan"
           :rows="rows"
           :columns="columns"
           :loading="loading"
+          :filter="filter"
           row-key="name"
         >
         <template v-slot:top-right>
@@ -47,6 +49,9 @@
               <q-td key="alamat" :props="props">
                 {{ props.row.alamat }}
               </q-td>
+              <q-td key="no_tlpn" :props="props">
+                {{ props.row.no_tlpn }}
+              </q-td>
               <q-td key="kategori" :props="props">
                 {{ props.row.kategori_karyawan.nama_kategori }}
               </q-td>
@@ -62,7 +67,7 @@
               <q-td key="status" :props="props">
                 <div v-if="props.row.kontrak.length === 0">
                   <q-badge color="positive">
-                    Baru Diinput
+                    Inputan Baru
                   </q-badge>
                 </div>
                 <div v-else>
@@ -234,6 +239,9 @@
 export default {
   data () {
     return {
+      pagination: {
+        rowsPerPage: 10
+      },
       columns: [
         { name: 'id_karyawan', align: 'left', label: ' ID Karyawan', field: 'id_karyawan' },
         { name: 'nama_karyawan', align: 'left', label: 'Nama Karyawan', field: 'nama_karyawan' },
@@ -244,6 +252,7 @@ export default {
         { name: 'jenis_kelamin', align: 'left', label: 'Jenis Kelamin', field: 'jenis_kelamin' },
         { name: 'agama', align: 'left', label: 'Agama', field: 'agama' },
         { name: 'alamat', align: 'left', label: 'Alamat', field: 'alamat' },
+        { name: 'no_tlpn', align: 'left', label: 'No Telpon', field: 'no_tlpn' },
         { name: 'kategori', align: 'left', label: 'Katagori', field: 'kategori' },
         { name: 'tanggal_lahir', align: 'left', label: 'Tanggal Lahir', field: 'tanggal_lahir' },
         { name: 'tanggal_masuk_kerja', align: 'left', label: 'Tanggal Masuk Kerja', field: 'tanggal_masuk_kerja' },

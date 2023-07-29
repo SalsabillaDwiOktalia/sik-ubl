@@ -2,9 +2,9 @@
   <q-page padding>
     <q-card flat>
       <q-card-section>
-        Perpanjang Kontrak
+        Perpanjang Kontrak Karyawan
       </q-card-section>
-      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'kontrakAdmin'}"/>
+      <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'dataKontrak'}"/>
       <q-card-section>
         <q-form @submit="onSubmit">
           <q-input label="Nomor SK" v-model="form.no_sk" />
@@ -29,7 +29,6 @@
   </q-page>
 </template>
 <script>
-/* eslint-disable */
 const model = () => {
   return {
     id_karyawan: null,
@@ -50,20 +49,6 @@ export default {
     }
   },
   methods: {
-    history () {
-      // this.$showLoading()
-      this.form.id_karyawan = this.$route.params.id
-      this.form.id_kontrak = this.$route.params.id_kontrak
-
-      this.$axios.post('/kontrak/history', this.form)
-        .finally(() => this.$hide())
-        .then(res => {
-          console.log("Berhasil")
-          // if (this.$parseResponse(res.data)) {
-          //   this.$router.back()
-          // }
-        })
-    },
     onSubmit () {
       this.$showLoading()
       this.form.id_karyawan = this.$route.params.id
@@ -73,7 +58,6 @@ export default {
         .finally(() => this.$hide())
         .then(res => {
           if (this.$parseResponse(res.data)) {
-            this.history()
             this.$router.back()
           }
         })

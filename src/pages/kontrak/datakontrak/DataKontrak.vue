@@ -51,8 +51,8 @@
               </q-td>
               <q-td key="ket_kontrak" :props="props">
                 <div class="justify-center q-gsssutter-x-xs">
-                  <q-btn :disable="props.row.jenis_kontrak === 3" :to="{name:'inputPerpanjangKontrakAdmin', params:{id:props.row.id_karyawan, id_kontrak:props.row.id_kontrak}}" color="primary" label="Perpanjang Kontrak" unelevated outline dense />
-                  <q-btn :disable="props.row.jenis_kontrak === 3" :to="{name:'inputPensiunAdmin', params:{id:props.row.id_karyawan, id_kontrak:props.row.id_kontrak}}" color="primary" label="Pensiun" unelevated outline dense />
+                  <q-btn :disable="props.row.jenis_kontrak === 3" :to="{name:'perpanjangKontrak', params:{id:props.row.id_karyawan, id_kontrak:props.row.id_kontrak}}" color="primary" label="Perpanjang Kontrak" unelevated outline dense />
+                  <q-btn :disable="props.row.jenis_kontrak === 3" :to="{name:'PensiunKontrak', params:{id:props.row.id_karyawan, id_kontrak:props.row.id_kontrak}}" color="primary" label="Pensiun" unelevated outline dense />
                 </div>
               </q-td>
               <q-td key="status" :props="props">
@@ -70,7 +70,7 @@
                 <div class="justify-center q-gutter-x-xs">
                   <q-btn label="edit" unelevated icon="edit" color="warning" :to="{name:'editKaryawanAdmin', params:{id:props.row.id_karyawan}}"/>
                   <q-btn label="hapus" unelevated icon="delete" color="negative" @click="hapus(props.row.id_karyawan)"/>
-                  <q-btn label="Detail" unelevated icon="info" color="primary" :to="{name: 'detailKontrakAdmin', params:{id_kontrak:props.row.id_kontrak}}" />
+                  <q-btn label="Detail" unelevated icon="info" color="primary" :to="{name: 'datakontrakDetail', params:{id:props.row.id_karyawan}}" />
                 </div>
               </q-td>
             </q-tr>
@@ -114,21 +114,6 @@ export default {
             this.loading = false
           }
         })
-    },
-    hapus (id) {
-      this.$q.dialog({
-        title: 'konfirmasi',
-        message: 'apakah kamu yakin menghapus ',
-        cancel: true,
-        persistent: true
-      }).onOk(() => {
-        this.$axios.delete(`/kontrak/delete/${id}`)
-          .then(res => {
-            if (this.$parseResponse(res.data)) {
-              this.getData()
-            }
-          })
-      })
     }
   }
 }

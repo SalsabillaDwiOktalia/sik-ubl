@@ -54,6 +54,8 @@
   </q-layout>
 </template>
 <script>
+/* eslint-disable */
+import {LocalStorage} from 'quasar'
 export default {
   data () {
     return {
@@ -74,11 +76,13 @@ export default {
             const data = res.data.data
             if (data.level === 0) {
               this.$setProfile(data)
+              LocalStorage.set('user', data)
               this.$router.push({
                 name: 'dashboardAdmin'
               })
             } else if (data.level === 1) {
               this.$setProfile(data)
+              LocalStorage.set('user', data)
               this.$router.push({
                 name: 'indexKaryawan'
               })

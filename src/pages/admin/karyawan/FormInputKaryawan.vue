@@ -7,15 +7,24 @@
       <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'karyawanAdmin'}"/>
       <q-card-section>
         <q-form @submit="onSubmit">
-          <q-input label="Nama Karyawan" v-model="form.nama_karyawan" />
+          <q-input label="Nama Karyawan" v-model="form.nama_karyawan" :rules="[  val => val && val.length > 0 || 'Nama Karyawan tidak boleh 0 / kosong !']"/>
           <q-select
             label="Status"
-            v-model="status"
-            :options="listStatus"
-            option-value="id_status"
-            option-label="nama_status"
+            v-model="form.status"
+            :options= opsiStatus
           />
-          <q-input label="NIDN" v-model="form.nidn" />
+          <!-- <div>{{ this.form.status }}</div> -->
+          <div v-if="this.form.status == 'dosen'">
+            <q-input label="NIDN" v-model="form.nidn" :rules="[  val => val && val.length > 0 || 'NIDN tidak boleh 0 / kosong !']" />
+          </div>
+
+          <!-- <div v-if="this.status == 'karyawan'">
+
+          </div> -->
+          <!-- <div v-if="this.status == 'dosen'">
+
+          </div>
+          <div>{{ this.status.nama_status }}</div> -->
           <q-select
             label="Kategori"
             v-model="kategori"
@@ -51,24 +60,26 @@
             </template>
           </q-input>
           <q-input readonly label="Tanggal Pensiun" v-model="form.tgl_pensiun" />
-          <q-input label="NIK" v-model="form.nik" />
-          <q-input label="Alamat" v-model="form.alamat" type="textarea" />
-          <div>Jenis Kelamin</div>
-          <div class="q-gutter-sm">
-            <q-radio v-model="form.jenis_kelamin" val="Laki-Laki" label="Laki-Laki" />
-            <q-radio v-model="form.jenis_kelamin" val="Perempuan" label="Perempuan" />
+          <q-input label="NIK" v-model="form.nik" :rules="[  val => val && val.length > 0 || 'NIK tidak boleh 0 / kosong !']"/>
+          <q-input label="Alamat" v-model="form.alamat" type="textarea" :rules="[  val => val && val.length > 0 || 'Alamat tidak boleh 0 / kosong !']"/>
+          <div>
+            <q-select
+            label="Jenis Kelamin"
+            v-model="form.jenis_kelamin"
+            :options="opsiJenisKelamin"
+            :rules="[  val => val && val.length > 0 || 'Jenis Kelamin tidak boleh 0 / kosong !']"
+          />
           </div>
-          <div>Agama</div>
-          <div class="q-gutter-sm">
-            <q-radio v-model="form.agama" val="Islam" label="Islam" />
-            <q-radio v-model="form.agama" val="Protestan" label="Protestan" />
-            <q-radio v-model="form.agama" val="Khatolik" label="Khatolik" />
-            <q-radio v-model="form.agama" val="Buddha" label="Buddha" />
-            <q-radio v-model="form.agama" val="Hindu" label="Hindu" />
-            <q-radio v-model="form.agama" val="Khonghucu" label="Khonghucu" />
+          <div>
+            <q-select
+            label="Agama"
+            v-model="form.agama"
+            :options="opsiAgama"
+            :rules="[  val => val && val.length > 0 || 'Agama tidak boleh 0 / kosong !']"
+          />
           </div>
-          <q-input label="Nomor Telpon" v-model="form.no_tlpn" />
-          <q-input label="Gaji Pokok" v-model="form.gaji_pokok" />
+          <q-input label="Nomor Telpon" v-model="form.no_tlpn" type="number" :rules="[  val => val && val.length > 0 || 'Nomor Telepon boleh 0 / kosong !']"/>
+          <q-input label="Gaji Pokok" v-model="form.gaji_pokok" type="number" :rules="[  val => val && val.length > 0 || 'Gaji Pokok tidak boleh 0 / kosong !']"/>
           <!-- <q-input label="Nomor SK" v-model="form.no_sk" /> -->
           <q-btn label="Submit Karyawan" color="primary" unelevated type="submit" />
         </q-form>
@@ -77,6 +88,8 @@
   </q-page>
 </template>
 <script>
+/* eslint-disable */
+import karyawan from 'src/router/karyawan'
 const model = () => {
   return {
     nama_karyawan: null,
@@ -98,10 +111,26 @@ export default {
   data () {
     return {
       form: model(),
-      status: null,
+      jk: null,
       listStatus: [],
       listKategori: [],
-      kategori: null
+      opsiStatus: [
+        "karyawan",
+        "dosen"
+      ],
+      opsiJenisKelamin: [
+        "Laki - Laki",
+        "Perrempuan"
+      ],
+      opsiAgama: [
+        "Islam",
+        "Protestan",
+        "Khatolik",
+        "Buddha",
+        "Hindu",
+        "Konghuchu"
+      ],
+      kategori: null,
     }
   },
   created () {
@@ -110,12 +139,20 @@ export default {
   },
   methods: {
     onSubmit () {
+
       this.$showLoading()
-      this.form.status = this.status.id_status
+      // console.log(this.form.status)
+      if (this.form.status == "karyawan") {
+        this.form.status = 2;
+      }
+      if (this.form.status == "dosen") {
+        this.form.status = 3;
+      }
       this.form.kategori = this.kategori.id_kategori
       this.$axios.post('/karyawan/create', this.form)
         .finally(() => this.$hide())
         .then(res => {
+          // console.log(this.form)
           if (this.$parseResponse(res.data)) {
             this.$router.back()
           }

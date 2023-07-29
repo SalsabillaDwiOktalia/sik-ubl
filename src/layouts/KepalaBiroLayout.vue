@@ -92,15 +92,39 @@
 
         <q-expansion-item
           icon="edit_document"
-          label="Logbook"
+          label="Penilaian Karyawan"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'laporanKaryawan'}" active-class="active">
+          <q-item clickable :to="{name: 'inputPenilaian'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
               <q-item-section>
-                <q-item-label>Karyawan</q-item-label>
+                <q-item-label>Input Penilaian Karyawan</q-item-label>
+              </q-item-section>
+          </q-item>
+
+          <q-item clickable :to="{name: 'LihatPenilaian'}" active-class="active">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Lihat Penilaian Karyawan</q-item-label>
+              </q-item-section>
+          </q-item>
+        </q-expansion-item>
+
+        <q-expansion-item
+          icon="notifications_active"
+          label="Pemberitahuan"
+          :content-inset-level="0"
+        >
+          <q-item clickable :to="{name: 'lihatPemberitahuan'}" active-class="active">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Lihat Pemberitahuan</q-item-label>
               </q-item-section>
           </q-item>
         </q-expansion-item>

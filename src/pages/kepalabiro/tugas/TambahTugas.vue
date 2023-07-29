@@ -16,10 +16,10 @@
           />
           <q-select
             label="Ditujukan Ke"
-            v-model="jabatan_karyawan"
-            :options="listJabatan_karyawan"
-            option-value="id_jabatan_karyawan"
-            :option-label="r => `${r.nama_jabatan} ${r.nama_unit_kerja} (${r.nama_karyawan})`"
+            v-model="jabatan"
+            :options="listJabatan"
+            option-value="kode_jabatan"
+            :option-label="r => `${r.nama_jabatan} (${r.nama_karyawan})`"
           />
           <q-input label="Judul Tugas" v-model="form.judul_tugas" />
           <q-input label="Deskripsi Tugas" v-model="form.deskripsi_tugas" />
@@ -48,31 +48,37 @@
   </q-page>
 </template>
 <script>
+/* eslint-disable */
+import { defineComponent, ref } from 'vue'
 export default {
   data () {
     return {
       form: {
         judul_tugas: null,
         id_kepala_biro: null,
-        id_jabatan_pimpinan_unit: null,
+        id_jabatan: null,
+        id_karyawan: null,
         deadline: null
       },
+      id_jabatan_ : null,
       lampiran: null,
       kepalaBiro: null,
-      id_jabatan_pimpinan_unit: null,
+      jabatan: null,
+      listJabatanKaryawan: null,
       listKepalaBiro: [],
-      listId_jabatan_pimpinan_unit: []
+      listJabatan: []
     }
   },
   created () {
     this.getKepalaBiro()
     this.getId_jabatan_pimpinan_unit()
+    this.getNama()
   },
   methods: {
     onSubmit () {
       this.$showLoading()
       this.form.id_kepala_biro = this.kepalaBiro.id_jabatan_karyawan
-      this.form.id_jabatan_pimpinan_unit = this.id_jabatan_pimpinan_unit.id_jabatan_karyawan
+      this.form.id_karyawan = this.id_karyawan.id_jabatan_karyawan
       const formData = new FormData()
       formData.append('data', JSON.stringify(this.form))
       formData.append('lampiran', this.lampiran)
@@ -89,6 +95,21 @@ export default {
         .then(res => {
           if (this.$parseResponse(res.data, false)) {
             this.listKepalaBiro = res.data.data
+            console.log(res.data.data)
+            this.id_jabatan_ = res.data.data[0].id_jabatan
+            // console.log(this.id_jabatan_)
+            // this.getNama(this.kode)
+          }
+        })
+    },
+    getNama () {
+      this.$axios.get(`jabatan_karyawan/get/${this.$getProfile().id_karyawan}`)
+        .then(res => {
+          console.log(res.data.data)
+          if (this.$parseResponse(res.data, false)) {
+            // console.log(res.data.data)
+            // this.listKepalaBiro = res.data.data
+            // console.log(res.data.data)
           }
         })
     },

@@ -10,7 +10,7 @@ export default [
     children: [
       {
         path: 'dashboard',
-        component: () => import('pages/pimpinan/Index.vue'),
+        component: () => import('pages/kepalabiro/Index.vue'),
         name: 'dashboardKepalaBiro'
       },
       {
@@ -32,7 +32,28 @@ export default [
         path: 'tugas/kerjakan/:id',
         component: () => import('src/pages/kepalabiro/tugas/Kerjakan.vue'),
         name: 'kerjakanKepalaBiro'
+      },
+      {
+        path: 'penilaian',
+        component: () => import('src/pages/kepalabiro/penilaian/LihatPenilaian.vue'),
+        name: 'LihatPenilaian'
+      },
+      {
+        path: 'penilaian',
+        component: () => import('src/pages/kepalabiro/penilaian/InputPenilaian.vue'),
+        name: 'inputPenilaian'
+      },
+      {
+        path: 'penilaian',
+        component: () => import('src/pages/kepalabiro/penilaian/SubmitPenilaian.vue'),
+        name: 'SubmitPenilaian'
+      },
+      {
+        path: 'pemberitahuan',
+        component: () => import('src/pages/kepalabiro/pemberitahuan/LihatPemberitahuan.vue'),
+        name: 'lihatPemberitahuan'
       }
+
     ]
   }
 ]

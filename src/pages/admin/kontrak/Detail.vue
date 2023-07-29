@@ -68,6 +68,9 @@
       >
         <template v-slot:body="props">
           <q-tr :props="props">
+            <q-td key="id_karyawan" :props="props">
+                {{ props.row.karyawan.nama_karyawan }}
+              </q-td>
             <q-td key="status" :props="props">
               <q-badge :color="status[props.row.status].color" class="q-pa-xs">
                 {{ status[props.row.status].label }}
@@ -86,8 +89,14 @@ export default {
   data () {
     return {
       columns: [
+        { name: 'id_kontrak', align: 'left', label: 'ID Kontrak', field: 'id_kontrak' },
+        { name: 'id_karyawan', align: 'left', label: 'ID Karyawan', field: 'id_karyawan' },
+        { name: 'no_sk', align: 'left', label: 'No. SK', field: 'no_sk' },
+        { name: 'tgl_kontrak', align: 'left', label: 'Tanggal Kontrak', field: 'tgl_kontrak' },
+        { name: 'tgl_habis_kontrak', align: 'left', label: 'Habis Kontrak', field: 'tgl_habis_kontrak' },
+        { name: 'jenis_kontrak', align: 'left', label: 'Jenis Kontrak', field: 'jenis_kontrak' },
         { name: 'status', align: 'left', label: 'Status', field: 'status' },
-        { name: 'tgl_habis_kontrak', align: 'left', label: 'Tanggal Habis Kontrak', field: 'tgl_habis_kontrak' }
+        { name: 'ket_kontrak', align: 'left', label: 'Keterangan', field: 'ket_kontrak' }
       ],
       rows: [],
       filter: null
