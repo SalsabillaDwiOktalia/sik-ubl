@@ -147,8 +147,8 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
 import logout from '../helper/Logout'
+import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'MainLayout',
 
