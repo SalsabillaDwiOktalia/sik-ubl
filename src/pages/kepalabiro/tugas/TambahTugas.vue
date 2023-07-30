@@ -7,7 +7,7 @@
       <q-btn class="q-ml-md" icon="arrow_back" unelevated color="primary" :to="{name: 'dashboardKepalaBiro'}"/>
       <q-card-section>
         <q-form @submit="onSubmit">
-          <q-select
+          <!-- <q-select
             label="Jabatan Pemberi Tugas"
             v-model="kepalaBiro"
             :options="listKepalaBiro"
@@ -20,7 +20,7 @@
             :options="listJabatan"
             option-value="kode_jabatan"
             :option-label="r => `${r.nama_jabatan} (${r.nama_karyawan})`"
-          />
+          /> -->
           <q-input label="Judul Tugas" v-model="form.judul_tugas" />
           <q-input label="Deskripsi Tugas" v-model="form.deskripsi_tugas" />
           <q-input label="Deadline" v-model="form.deadline" @click="$refs.deadline.show()" mask="date" :rules="['date']">
@@ -77,54 +77,52 @@ export default {
   methods: {
     onSubmit () {
       this.$showLoading()
-      this.form.id_kepala_biro = this.kepalaBiro.id_jabatan_karyawan
-      this.form.id_karyawan = this.id_karyawan.id_jabatan_karyawan
       const formData = new FormData()
+      formData.append('hasil_tugas', this.lampiran)
       formData.append('data', JSON.stringify(this.form))
-      formData.append('lampiran', this.lampiran)
-      this.$axios.post('/tugas_kepalabiro/create', formData)
+      this.$axios.put(`tugas_kepalabiro/update${this.$route.params.id}`, formData)
         .finally(() => this.$hide())
         .then(res => {
           if (this.$parseResponse(res.data)) {
             this.$router.back()
           }
         })
-    },
-    getKepalaBiro () {
-      this.$axios.get('jabatan_karyawan/get-kepala-biro')
-        .then(res => {
-          if (this.$parseResponse(res.data, false)) {
-            this.listKepalaBiro = res.data.data
-            console.log(res.data.data)
-            this.id_jabatan_ = res.data.data[0].id_jabatan
-            // console.log(this.id_jabatan_)
-            // this.getNama(this.kode)
-          }
-        })
-    },
-    getNama () {
-      this.$axios.get(`jabatan_karyawan/get/${this.$getProfile().id_karyawan}`)
-        .then(res => {
-          console.log(res.data.data)
-          if (this.$parseResponse(res.data, false)) {
-            // console.log(res.data.data)
-            // this.listKepalaBiro = res.data.data
-            // console.log(res.data.data)
-          }
-        })
-    },
-    getId_jabatan_pimpinan_unit () {
-      this.$axios.get(`karyawan/get-jabatan/by-level/${this.$getProfile().id_karyawan}`)
-        .then(res => {
-          if (this.$parseResponse(res.data, false)) {
-            const data = res.data.data
-            this.listId_jabatan_pimpinan_unit = data
-            if (data.length > 0) {
-              this.id_jabatan_pimpinan_unit = data[0]
-            }
-          }
-        })
     }
+    // getKepalaBiro () {
+    //   this.$axios.get('jabatan_karyawan/get-kepala-biro')
+    //     .then(res => {
+    //       if (this.$parseResponse(res.data, false)) {
+    //         this.listKepalaBiro = res.data.data
+    //         console.log(res.data.data)
+    //         this.id_jabatan_ = res.data.data[0].id_jabatan
+    //         // console.log(this.id_jabatan_)
+    //         // this.getNama(this.kode)
+    //       }
+    //     })
+    // },
+    // getNama () {
+    //   this.$axios.get(`jabatan_karyawan/get/${this.$getProfile().id_karyawan}`)
+    //     .then(res => {
+    //       console.log(res.data.data)
+    //       if (this.$parseResponse(res.data, false)) {
+    //         // console.log(res.data.data)
+    //         // this.listKepalaBiro = res.data.data
+    //         // console.log(res.data.data)
+    //       }
+    //     })
+    // },
+    // getId_jabatan_pimpinan_unit () {
+    //   this.$axios.get(`karyawan/get-jabatan/by-level/${this.$getProfile().id_karyawan}`)
+    //     .then(res => {
+    //       if (this.$parseResponse(res.data, false)) {
+    //         const data = res.data.data
+    //         this.listId_jabatan_pimpinan_unit = data
+    //         if (data.length > 0) {
+    //           this.id_jabatan_pimpinan_unit = data[0]
+    //         }
+    //       }
+    //     })
+    // }
   }
 }
 </script>

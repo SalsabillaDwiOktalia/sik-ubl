@@ -150,8 +150,8 @@
     </q-page-container>
   </q-layout>
 </template>
-<script>
 
+<script>
 import { defineComponent, ref } from 'vue'
 import logout from '../helper/Logout'
 export default defineComponent({
