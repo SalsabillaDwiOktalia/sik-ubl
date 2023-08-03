@@ -38,18 +38,18 @@
       show-if-above
       content-class="bg-white"
     >
-      <q-list class="q-pa-xs">
-          <q-item class="justify-center text-center q-mb-md q-pt-md">
-            <div>
-              <q-avatar style="width: 100px;height: 100px" class="q-mb-md">
-                <img src="~assets/img/LOGO-UBL.png" alt="">
-              </q-avatar>
-              <div class="text-weight-bold">SIK UBL</div>
-              <div class="text-weight-bold">Hello, {{ $getProfile().username }}</div>
-            </div>
-          </q-item>
+    <q-list class="q-pa-xs">
+        <q-item class="justify-center text-center q-mb-md q-pt-md">
+          <div>
+            <q-avatar style="width: 100px;height: 100px" class="q-mb-md">
+              <img src="~assets/img/LOGO-UBL.png" alt="">
+            </q-avatar>
+            <div class="text-weight-bold">SIK UBL</div>
+            <div class="text-weight-bold">Hello, {{ $getProfile().username }}</div>
+          </div>
+        </q-item>
 
-        <q-item clickable active-class="active" v-ripple :to="{name: 'dashboardPimpinan'}">
+        <q-item clickable active-class="active" v-ripple :to="{name: 'dashboardPenilai'}">
           <q-item-section avatar>
             <q-icon name="dashboard" />
           </q-item-section>
@@ -60,67 +60,34 @@
         </q-item>
 
         <q-expansion-item
-          icon="library_books"
-          label="Tugas"
+          icon="school"
+          label="Tri Dharma"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'tugasPimpinan'}" active-class="active">
+          <q-item clickable :to="{name: 'jawabanTridharma'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
               <q-item-section>
-                <q-item-label>Lihat Tugas</q-item-label>
+                <q-item-label>Jawaban Tri Dharma</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'tugasTambahTugasPimpinan'}" active-class="active">
+          <q-item clickable :to="{name: 'LihatJumlahSKS '}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
               <q-item-section>
-                <q-item-label>Tambah Tugas</q-item-label>
+                <q-item-label>Laporan Tri Dharma</q-item-label>
               </q-item-section>
           </q-item>
         </q-expansion-item>
-
-        <q-expansion-item
-          icon="edit_document"
-          label="Laporan Penilaian"
-          :content-inset-level="0"
-        >
-          <q-item clickable :to="{name: 'LaporanDosen'}" active-class="active">
-            <q-item-section avatar>
-            </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Dosen</q-item-label>
-              </q-item-section>
-          </q-item>
-          <q-item clickable :to="{name: 'LaporanKaryawanDosen'}" active-class="active">
-            <q-item-section avatar>
-            </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Karyawan</q-item-label>
-              </q-item-section>
-          </q-item>
-        </q-expansion-item>
-
-        <q-item clickable :to="{name: 'ArsipPimpinan'}" active-class="active">
-          <q-item-section avatar>
-            <q-icon name="folder" />
-          </q-item-section>
-
-            <q-item-section>
-              <q-item-label>Arsip</q-item-label>
-            </q-item-section>
-      </q-item>
 
         <q-expansion-item
           icon="settings"
           label="About"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'TentangKamiPimpinan'}" active-class="active">
+          <q-item clickable :to="{name: 'TentangKamiDosen'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
@@ -128,7 +95,7 @@
                 <q-item-label>Tentang Kami</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'ProfilPimpinan'}" active-class="active">
+          <q-item clickable :to="{name: 'ProfilDosen'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 

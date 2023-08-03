@@ -14,9 +14,14 @@ export default [
         component: () => import('src/pages/dosen/Index.vue'),
         name: 'dashboardDosen'
       },
+      // {
+      //   path: 'tridharma1',
+      //   component: () => import('pages/dosen/tugas/Index1.vue'),
+      //   name: 'sdfsdfsdf'
+      // },
       {
         path: 'tridharma',
-        component: () => import('pages/dosen/tugas/Index.vue'),
+        component: () => import('src/pages/dosen/tugas/Index.vue'),
         name: 'UploadTriDharma'
       },
       {

@@ -4,7 +4,8 @@ export default [
     component: () => import('layouts/KontrakLayout.vue'),
     meta: {
       kode: 'AA004',
-      karyawan: true
+      karyawan: true,
+      akses: 1
     },
     children: [
       {

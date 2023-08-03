@@ -4,6 +4,7 @@ import dosenRoutes from './dosen'
 import kepalabiroRoutes from './kepalabiro'
 import karyawanRoutes from './karyawan'
 import kontrakRoutes from './kontrak'
+import penilaiRoutes from './penilai'
 
 const routes = [
   ...adminRoutes,
@@ -12,6 +13,7 @@ const routes = [
   ...kepalabiroRoutes,
   ...karyawanRoutes,
   ...kontrakRoutes,
+  ...penilaiRoutes,
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),

@@ -119,8 +119,8 @@ export default {
         "dosen"
       ],
       opsiJenisKelamin: [
-        "Laki - Laki",
-        "Perrempuan"
+        "Laki-Laki",
+        "Perempuan"
       ],
       opsiAgama: [
         "Islam",

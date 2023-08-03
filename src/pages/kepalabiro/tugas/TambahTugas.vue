@@ -16,10 +16,10 @@
           />
           <q-select
             label="Ditujukan Ke"
-            v-model="jabatan"
-            :options="listJabatan"
+            v-model="karyawan"
+            :options="listKaryawan"
             option-value="kode_jabatan"
-            :option-label="r => `${r.nama_jabatan} (${r.nama_karyawan})`"
+            :option-label="r => `${r.karyawan.nama_karyawan}`"
           />
           <q-input label="Judul Tugas" v-model="form.judul_tugas" />
           <q-input label="Deskripsi Tugas" v-model="form.deskripsi_tugas" />
@@ -56,75 +56,70 @@ export default {
       form: {
         judul_tugas: null,
         id_kepala_biro: null,
-        id_jabatan: null,
         id_karyawan: null,
         deadline: null
       },
       id_jabatan_ : null,
       lampiran: null,
-      kepalaBiro: null,
-      jabatan: null,
       listJabatanKaryawan: null,
+      id_tugas: null,
       listKepalaBiro: [],
-      listJabatan: []
+      listKaryawan: [],
+      kepalaBiro: null,
+      karyawan: null
     }
   },
-  created () {
-    this.getKepalaBiro()
-    this.getId_jabatan_pimpinan_unit()
-    this.getNama()
+  async created () {
+    await this.getKepalaBiro()
+    // this.getId_jabatan_pimpinan_unit()
+    await this.getNama()
   },
   methods: {
     onSubmit () {
       this.$showLoading()
       this.form.id_kepala_biro = this.kepalaBiro.id_jabatan_karyawan
-      this.form.id_karyawan = this.id_karyawan.id_jabatan_karyawan
-      const formData = new FormData()
-      formData.append('data', JSON.stringify(this.form))
-      formData.append('lampiran', this.lampiran)
-      this.$axios.post('/tugas_kepalabiro/create', formData)
-        .finally(() => this.$hide())
-        .then(res => {
-          if (this.$parseResponse(res.data)) {
-            this.$router.back()
-          }
-        })
+      this.form.id_karyawan = this.karyawan.id_jabatan_karyawan
+      console.log(this.form)
+      // const formData = new FormData()
+      // formData.append('data', JSON.stringify(this.form))
+      // formData.append('lampiran', this.lampiran)
+      // this.$axios.post('kepala-biro/create', formData)
+      //   .finally(() => this.$hide())
+      //   .then(res => {
+      //     if (this.$parseResponse(res.data)) {
+      //       this.$router.back()
+      //     }
+      //   })
     },
-    getKepalaBiro () {
-      this.$axios.get('jabatan_karyawan/get-kepala-biro')
+    async getKepalaBiro () {
+      await this.$axios.get('jabatan_karyawan/get-kepala-biro')
         .then(res => {
           if (this.$parseResponse(res.data, false)) {
             this.listKepalaBiro = res.data.data
-            console.log(res.data.data)
-            this.id_jabatan_ = res.data.data[0].id_jabatan
-            // console.log(this.id_jabatan_)
-            // this.getNama(this.kode)
+            this.kepalaBiro = res.data.data[0]
           }
         })
     },
-    getNama () {
-      this.$axios.get(`jabatan_karyawan/get/${this.$getProfile().id_karyawan}`)
-        .then(res => {
-          console.log(res.data.data)
-          if (this.$parseResponse(res.data, false)) {
-            // console.log(res.data.data)
-            // this.listKepalaBiro = res.data.data
-            // console.log(res.data.data)
-          }
-        })
-    },
-    getId_jabatan_pimpinan_unit () {
-      this.$axios.get(`karyawan/get-jabatan/by-level/${this.$getProfile().id_karyawan}`)
+    async getNama () {
+      await this.$axios.get(`kepala-biro/get-by-unit-kerja/${this.kepalaBiro.id_unit_kerja}`)
         .then(res => {
           if (this.$parseResponse(res.data, false)) {
-            const data = res.data.data
-            this.listId_jabatan_pimpinan_unit = data
-            if (data.length > 0) {
-              this.id_jabatan_pimpinan_unit = data[0]
-            }
+            this.listKaryawan = res.data.data
           }
         })
     }
+    // getId_jabatan_pimpinan_unit () {
+    //   this.$axios.get(`karyawan/get-jabatan/by-level/${this.$getProfile().id_karyawan}`)
+    //     .then(res => {
+    //       if (this.$parseResponse(res.data, false)) {
+    //         const data = res.data.data
+    //         this.listId_jabatan_pimpinan_unit = data
+    //         if (data.length > 0) {
+    //           this.id_jabatan_pimpinan_unit = data[0]
+    //         }
+    //       }
+    //     })
+    // }
   }
 }
 </script>

@@ -20,7 +20,7 @@
           <q-btn flat dense round class="q-pa-sm" icon="person" style="font-size: 14px;">
             <q-menu>
               <q-list>
-                <q-item>
+                <q-item @click="logout($router)" clickable>
                   <q-item-section side>
                     <q-icon name="logout"/>
                   </q-item-section>
@@ -184,6 +184,7 @@
 </template>
 
 <script>
+import logout from '../helper/Logout'
 import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'MainLayout',
@@ -192,6 +193,7 @@ export default defineComponent({
     const leftDrawerOpen = ref(false)
 
     return {
+      logout,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value

@@ -8,6 +8,7 @@ const api = axios.create({ baseURL })
 export default boot(({ app }) => {
   app.config.globalProperties.$axios = api
   app.config.globalProperties.$baseLampiran = `${baseURL}lampiran/`
+  app.config.globalProperties.$baseURL = `${baseURL}`
 })
 
 export { api }

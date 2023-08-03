@@ -72,27 +72,28 @@
                 <q-item-label>Lihat Tugas</q-item-label>
               </q-item-section>
           </q-item>
-          <q-item clickable :to="{name: 'TambahTugasKaryawan'}" active-class="active">
-            <q-item-section avatar>
-            </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Tambah Tugas</q-item-label>
-              </q-item-section>
-          </q-item>
         </q-expansion-item>
 
         <q-expansion-item
           icon="edit_document"
-          label="Laporan Penilaian"
+          label="Penilaian"
           :content-inset-level="0"
         >
-          <q-item clickable :to="{name: 'LaporanKaryawan'}" active-class="active">
+          <q-item clickable :to="{name: 'inisiatifIdeKaryawan'}" active-class="active">
             <q-item-section avatar>
             </q-item-section>
 
               <q-item-section>
-                <q-item-label>Karyawan</q-item-label>
+                <q-item-label>Ide Inisiatif</q-item-label>
+              </q-item-section>
+          </q-item>
+
+          <q-item clickable :to="{name: 'PoinSayaKaryawan'}" active-class="active">
+            <q-item-section avatar>
+            </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Poin Saya</q-item-label>
               </q-item-section>
           </q-item>
         </q-expansion-item>
